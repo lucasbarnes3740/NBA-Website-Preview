@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newport Boat Adventures | Charter & Events aboard One Day</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d1f3c;--navy-mid:#162d52;--navy-light:#1e3d6e;
+  --gold:#c9a84c;--gold-light:#e2c47a;--cream:#faf7f2;--white:#ffffff;
+  --text-mid:#3a4a6b;--text-muted:#7a8aaa;
+  --border:rgba(201,168,76,0.25);
+  --shadow:0 4px 40px rgba(13,31,60,0.12);--shadow-lg:0 12px 60px rgba(13,31,60,0.2);
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Cormorant Garamond',Georgia,serif;
+  --font-ui:'Montserrat',sans-serif;
+  --transition:0.3s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:18px;color:var(--navy);background:var(--cream);overflow-x:hidden}
+
+/* ── NAV ── */
+#site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(13,31,60,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0 48px;height:70px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:22px;color:var(--gold);letter-spacing:.02em;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.nav-logo-wave{width:46px;height:36px;flex-shrink:0;margin-bottom:-2px}
+.nav-logo span{color:var(--white);font-weight:400;font-style:italic}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);cursor:pointer;border:none;background:none;padding:4px 0;position:relative;transition:color var(--transition)}
+.nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform var(--transition)}
+.nav-link:hover,.nav-link.active{color:var(--gold)}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.nav-book-btn{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:10px 22px;border-radius:2px;transition:background var(--transition)}
+.nav-book-btn:hover{background:var(--gold-light)}
+/* About dropdown */
+.nav-dropdown{position:relative}
+.nav-dropdown-trigger{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);cursor:pointer;border:none;background:none;padding:4px 0;position:relative;transition:color var(--transition);display:flex;align-items:center;gap:5px}
+.nav-dropdown-trigger::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform var(--transition)}
+.nav-dropdown:hover .nav-dropdown-trigger{color:var(--gold)}
+.nav-dropdown:hover .nav-dropdown-trigger::after{transform:scaleX(1)}
+.nav-caret{font-size:8px;opacity:.6;transition:transform .2s}
+.nav-dropdown:hover .nav-caret{transform:rotate(180deg)}
+/* Invisible bridge fills the gap between trigger and menu so mouse doesn't "leave" the dropdown */
+.nav-dropdown::before{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px;background:transparent;z-index:999}
+.nav-dropdown-menu{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);
+  background:var(--navy);border:1px solid rgba(201,168,76,0.25);border-radius:4px;
+  min-width:155px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  /* Use opacity + visibility + pointer-events so we can transition with a leave delay */
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .18s ease, visibility 0s linear .35s;
+  z-index:1001;
+}
+.nav-dropdown:hover .nav-dropdown-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transition:opacity .18s ease, visibility 0s linear 0s;
+}
+.nav-dropdown-item{display:block;width:100%;padding:13px 20px;font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;text-align:left;transition:all .2s}
+.nav-dropdown-item:hover{background:rgba(201,168,76,.12);color:var(--gold)}
+.nav-dropdown-item+.nav-dropdown-item{border-top:1px solid rgba(201,168,76,.1)}
+/* Mobile */
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--gold);border-radius:1px}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--navy);border-bottom:1px solid var(--border);padding:24px;flex-direction:column;gap:14px;z-index:999}
+.mobile-menu.open{display:flex}
+.mobile-nav-link{font-family:var(--font-ui);font-size:12px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.8);cursor:pointer;background:none;border:none;text-align:left;padding:8px 0}
+.mobile-sub{font-family:var(--font-ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);cursor:pointer;background:none;border:none;text-align:left;padding:5px 0 5px 16px}
+
+/* ── PAGES ── */
+.page{display:none;padding-top:70px;min-height:100vh}
+.page.active{display:block}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-bg{position:absolute;inset:0;background-image:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/YX4Xw9bQwxu14lND/newport-boat-adventures-89-YD0w8qoxVpH2o4jW.jpg');background-size:cover;background-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(13,31,60,.55) 0%,rgba(13,31,60,.92) 70%)}
+.hero-waves{position:absolute;inset:0;overflow:hidden;opacity:.06}
+.hero-waves svg{width:100%;height:100%}
+.hero-content{position:relative;z-index:2;text-align:center;padding:40px 24px;max-width:820px}
+.hero-eyebrow{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-title{font-family:var(--font-display);font-size:clamp(34px,5vw,62px);font-weight:600;color:var(--white);line-height:1.08;margin-bottom:8px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-subtitle{font-family:var(--font-display);font-size:clamp(15px,1.8vw,20px);font-style:italic;color:rgba(255,255,255,.65);margin-bottom:40px;opacity:0;animation:fadeUp .8s .55s forwards}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .7s forwards}
+.btn-primary{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:16px 36px;border-radius:2px;transition:all var(--transition)}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 30px rgba(201,168,76,.3)}
+.btn-outline{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.4);cursor:pointer;padding:16px 36px;border-radius:2px;transition:all var(--transition)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-navy-outline{font-family:var(--font-ui);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--navy);border:1.5px solid var(--navy);cursor:pointer;padding:14px 36px;border-radius:2px;transition:all var(--transition)}
+.btn-navy-outline:hover{background:var(--navy);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp 1s 1s forwards}
+.hero-scroll span{font-family:var(--font-ui);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(201,168,76,.6),transparent);animation:scrollPulse 2s infinite}
+/* Curved wave transition */
+.section-wave{position:absolute;bottom:-1px;left:0;right:0;z-index:3;line-height:0}
+.section-wave svg{display:block;width:100%}
+
+/* ── PAGE HERO (sub-pages) ── */
+.page-hero{position:relative;height:420px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.page-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,31,60,.65),rgba(13,31,60,.88))}
+.page-hero-content{position:relative;z-index:2;text-align:center;padding:40px 24px}
+.page-hero-eyebrow{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:600;color:var(--white);margin-bottom:12px}
+.page-hero-title em{color:var(--gold);font-style:italic}
+.page-hero-sub{font-family:var(--font-body);font-size:20px;font-weight:300;color:rgba(255,255,255,.7);max-width:540px;margin:0 auto}
+
+/* ── SECTIONS ── */
+.section{padding:100px 48px;max-width:1200px;margin:0 auto}
+.section-eyebrow{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:600;color:var(--navy);line-height:1.15;margin-bottom:16px}
+.section-title em{font-style:italic;color:var(--navy-light)}
+.section-sub{font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-mid);max-width:540px;line-height:1.6;margin-bottom:52px}
+
+/* ── EXP CARDS ── */
+.experience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+.exp-card{background:var(--white);border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden;transition:all var(--transition);cursor:pointer}
+.exp-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.exp-card-img{height:240px;background:var(--navy-mid);position:relative;overflow:hidden}
+.exp-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.exp-card:hover .exp-card-img img{transform:scale(1.05)}
+.exp-card-img-label{position:absolute;bottom:12px;left:16px;font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);background:rgba(13,31,60,.75);padding:4px 10px;border-radius:2px;z-index:2}
+.exp-card-body{padding:28px}
+.exp-card-title{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.exp-card-desc{font-family:var(--font-body);font-size:16px;color:var(--text-mid);line-height:1.6;margin-bottom:16px}
+.exp-card-meta{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(201,168,76,.2)}
+.exp-price{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy);line-height:1}
+.exp-starting-at{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text-muted);display:block;margin-bottom:2px;}
+.exp-price-sub{font-family:var(--font-ui);font-size:11px;color:var(--text-muted);letter-spacing:.02em;line-height:1.5;margin-top:3px}
+.exp-price-max{font-size:11px;color:var(--text-muted)}
+.exp-price-couples{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--gold);margin-top:4px}
+.exp-price span{font-size:13px;font-weight:400;color:var(--text-muted);font-family:var(--font-ui)}
+.exp-book-btn{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:10px 18px;border-radius:2px;transition:background var(--transition)}
+.exp-book-btn:hover{background:var(--gold-light)}
+
+/* ── VESSEL ── */
+.vessel-section{background:var(--navy);padding:100px 48px}
+.vessel-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.vessel-img{height:420px;border-radius:4px;position:relative;overflow:visible;padding:0 18px 18px 0}
+.vessel-glow{display:none}
+.vessel-img::before{content:'';position:absolute;bottom:0;right:0;width:calc(100% - 18px);height:calc(100% - 18px);background:var(--gold);border-radius:4px;z-index:0}
+.vessel-img::after{display:none}
+.vessel-img img{position:absolute;top:0;left:0;z-index:1;width:calc(100% - 18px);height:calc(100% - 18px);object-fit:cover;border-radius:4px;transition:transform .35s ease,box-shadow .35s ease;}
+.vessel-img img:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.25);}
+/* Gold offset shadow — bottom right — for vessel boat photo */
+.photo-shadow-gold{
+  border-radius:4px;
+  box-shadow:0 4px 6px rgba(0,0,0,.04),0 12px 40px rgba(13,31,60,.14),0 0 0 1px rgba(201,168,76,.25);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.photo-shadow-gold:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.18),0 0 0 1.5px rgba(201,168,76,.4);}
+/* Navy/blue offset shadow — bottom left — for story crew photo */
+.photo-shadow-navy{
+  border-radius:4px;
+  box-shadow:0 4px 6px rgba(0,0,0,.04),0 12px 40px rgba(13,31,60,.14),0 0 0 1px rgba(29,90,138,.2);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.photo-shadow-navy:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.18),0 0 0 1.5px rgba(29,90,138,.35);}
+.vessel-img-badge{position:absolute;bottom:-2px;right:-2px;z-index:3;font-family:var(--font-display);font-size:13px;font-weight:500;font-style:italic;letter-spacing:.02em;background:var(--gold);color:var(--navy);padding:10px 20px;border-radius:2px}
+.vessel-content .section-eyebrow{color:var(--gold)}
+.vessel-title{font-family:var(--font-display);font-size:44px;font-weight:600;color:var(--white);line-height:1.1;margin-bottom:8px}
+.vessel-title em{color:var(--gold);font-style:italic}
+.vessel-sub{font-family:var(--font-body);font-size:19px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:32px}
+.btn-outline-vessel{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.45);cursor:pointer;padding:16px 32px;border-radius:2px;transition:all var(--transition)}
+.btn-outline-vessel:hover{border-color:var(--gold);color:var(--gold)}
+.vessel-specs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.spec-item{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:14px 16px}
+.spec-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;opacity:.9}
+.spec-value{font-family:var(--font-display);font-size:18px;font-weight:500;color:var(--white)}
+
+/* ── OUR STORY SECTION (home page) ── */
+.story-section{padding:100px 48px;background:var(--cream)}
+.story-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative;padding:0 0 18px 0}
+.story-img-wrap::before{content:'';position:absolute;bottom:0;left:-18px;width:100%;height:calc(100% - 18px);background:var(--navy);border-radius:4px;z-index:0}
+.story-img-wrap::after{display:none}
+.story-img-frame{position:relative;border-radius:4px;overflow:hidden;z-index:1;display:block}
+.story-img-frame::before{display:none}
+.story-img-frame img{width:100%;height:500px;object-fit:cover;display:block;border-radius:4px;transition:transform .35s ease,box-shadow .35s ease;}
+.story-img-frame:hover img{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.18);}
+.story-gold-bar{display:none}
+.story-content .section-eyebrow{color:var(--gold)}
+.story-text{font-family:var(--font-body);font-size:18px;font-weight:300;color:var(--text-mid);line-height:1.8;margin-bottom:20px}
+.story-divider{width:40px;height:1.5px;background:var(--gold);margin:24px 0}
+.story-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{padding:100px 48px;background:var(--navy);position:relative}
+.testimonials-section .section-eyebrow{color:var(--gold)}
+.testimonials-section .section-title{color:var(--white)}
+.testimonials-section .section-title em{color:var(--gold)}
+.testimonials-section>*{position:relative;z-index:1}
+/* Wave at top of testimonials to break from story section */
+.testimonials-section::before{content:'';display:block;position:absolute;top:0;left:0;right:0;height:60px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 0%);z-index:0}
+.testimonials-inner{max-width:1100px;margin:0 auto}
+.review-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:32px;position:relative;transition:all .3s ease}
+.testimonial-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.3);border-color:var(--gold);background:rgba(255,255,255,.1)}
+.testimonial-card::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:var(--font-display);font-size:80px;color:var(--gold);opacity:.25;line-height:1;pointer-events:none}
+.testimonial-text{font-family:var(--font-body);font-size:17px;font-style:italic;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:20px;padding-top:20px}
+.testimonial-author{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.testimonial-stars{color:var(--gold);font-size:13px;margin-bottom:8px}
+.review-dots{display:flex;justify-content:center;gap:10px;margin-top:36px}
+.review-dot{width:10px;height:10px;border-radius:50%;background:rgba(201,168,76,.3);border:none;cursor:pointer;padding:0;transition:all .3s}
+.review-dot.active{background:var(--gold);transform:scale(1.3)}
+
+/* ── OCCASIONS BANNER ── */
+.occasions-banner{position:relative;height:420px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.occasions-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.occasions-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,31,60,.72),rgba(13,31,60,.85))}
+.occasions-content{position:relative;z-index:2;text-align:center;padding:40px 24px;max-width:680px}
+.occasions-title{font-family:var(--font-display);font-size:clamp(32px,5vw,58px);font-weight:600;color:var(--white);line-height:1.1;margin-bottom:16px}
+.occasions-sub{font-family:var(--font-body);font-size:20px;font-weight:300;color:rgba(255,255,255,.75);margin-bottom:32px;line-height:1.6}
+
+/* ── CHARTER CARDS ── */
+.charters-grid{max-width:1200px;margin:0 auto;padding:72px 48px;display:grid;gap:48px}
+.charter-card{background:var(--white);border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden;display:grid;grid-template-columns:340px 1fr;transition:box-shadow var(--transition)}
+.charter-card:hover{box-shadow:var(--shadow-lg)}
+.charter-card-img{background:var(--navy-mid);position:relative;min-height:280px;overflow:hidden}
+.charter-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.charter-card:hover .charter-card-img img{transform:scale(1.04)}
+.charter-badge{position:absolute;top:16px;left:16px;font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:2px;z-index:2}
+.badge-popular{background:var(--gold);color:var(--navy)}
+.badge-private{background:var(--navy);color:var(--gold);border:1px solid var(--gold)}
+.badge-event{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.charter-card-body{padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between}
+.charter-card-type{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.charter-card-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.charter-card-desc{font-family:var(--font-body);font-size:17px;color:var(--text-mid);line-height:1.65}
+.charter-features{display:flex;gap:20px;flex-wrap:wrap;margin:20px 0}
+.charter-feature{font-family:var(--font-ui);font-size:11px;font-weight:500;color:var(--text-mid);display:flex;align-items:center;gap:6px}
+.charter-feature::before{content:'—';color:var(--gold)}
+.charter-card-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(201,168,76,.15)}
+.charter-price{font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--navy);line-height:1}
+.charter-price .starting-at{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text-muted);display:block;margin-bottom:3px;text-transform:uppercase}
+.charter-price sub{font-size:15px;font-weight:400;color:var(--text-muted);font-family:var(--font-ui);vertical-align:baseline}
+.charter-price-block{display:flex;flex-direction:column;gap:5px}
+.charter-price-sub{font-family:var(--font-ui);font-size:11px;color:var(--text-muted);letter-spacing:.02em;line-height:1.4}
+.charter-price-couples{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--gold)}
+.price-max{font-size:11px;color:var(--text-muted);font-family:var(--font-ui);letter-spacing:.02em}
+.charter-book-btn{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:1px solid transparent;cursor:pointer;padding:14px 28px;border-radius:2px;transition:all var(--transition)}
+.charter-book-btn:hover{background:var(--gold-light);color:var(--navy)}
+
+/* ── CHARTERS PAGE — FOOD PARTNERSHIPS ── */
+.food-section{background:var(--navy);padding:90px 48px;border-top:3px solid var(--gold)}
+.food-inner{max-width:1100px;margin:0 auto}
+.food-inner .section-title{color:var(--white)}
+.food-intro{font-family:var(--font-body);font-size:19px;font-weight:300;color:rgba(255,255,255,.65);text-align:center;max-width:620px;margin:0 auto 52px;line-height:1.7}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-bottom:32px}
+.food-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:32px 28px;display:flex;flex-direction:column;gap:12px;transition:all var(--transition)}
+.food-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.3);border-color:var(--gold);background:rgba(255,255,255,.1)}
+.food-card-icon{font-size:36px;line-height:1}
+.food-card-eyebrow{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.food-card-title{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--white);line-height:1.2}
+.food-card-desc{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.65);line-height:1.6}
+.food-note{font-family:var(--font-ui);font-size:12px;color:rgba(255,255,255,.35);text-align:center;letter-spacing:.03em}
+
+/* ── CHARTERS PAGE — REVIEWS ── */
+.charter-reviews-section{background:var(--white);padding:80px 48px;border-top:1px solid rgba(201,168,76,.1)}
+.charter-reviews-inner{max-width:1100px;margin:0 auto}
+.charter-stars-row{font-size:22px;color:var(--gold);text-align:center;margin-bottom:48px;display:flex;align-items:center;justify-content:center;gap:10px}
+.charter-stars-label{font-family:var(--font-ui);font-size:13px;color:var(--text-muted);font-weight:500}
+.charter-review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.charter-review-card{background:var(--cream);border:1px solid rgba(201,168,76,.2);border-left:4px solid var(--gold);border-radius:0 4px 4px 0;padding:28px 24px;transition:all .3s}
+.charter-review-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.charter-review-stars{color:var(--gold);font-size:13px;margin-bottom:14px;letter-spacing:2px}
+.charter-review-text{font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--text-mid);line-height:1.7;margin-bottom:20px}
+.charter-review-author{font-family:var(--font-ui);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.charter-review-source{font-family:var(--font-ui);font-size:11px;color:var(--text-muted);margin-top:2px}
+
+
+/* ── CHARTER CTA TRANSITION ── */
+.cta-divider{background:var(--white);padding:48px 0 0}
+.cta-divider-inner{display:flex;align-items:center;justify-content:center;gap:16px;max-width:480px;margin:0 auto;padding:0 48px}
+.cta-divider-line{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.45))}
+.cta-divider-inner .cta-divider-line:last-child{background:linear-gradient(to left,transparent,rgba(201,168,76,.45))}
+.cta-divider-ornament{font-size:12px;color:var(--gold);opacity:.7;flex-shrink:0;letter-spacing:2px}
+/* CTA section */
+.charter-cta-section{background:var(--cream);padding:100px 48px 96px;text-align:center}
+.charter-cta-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:600;color:var(--navy);line-height:1.15;margin-bottom:16px}
+.charter-cta-title em{color:var(--gold);font-style:italic}
+.charter-cta-sub{font-family:var(--font-body);font-size:20px;font-weight:300;color:var(--text-mid);margin-bottom:36px}
+.charter-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
+.charter-cta-call{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);border:1.5px solid var(--navy);padding:16px 32px;border-radius:2px;text-decoration:none;transition:all var(--transition);cursor:pointer}
+.charter-cta-call:hover{background:var(--navy);color:var(--gold)}
+
+@media(max-width:900px){.charter-review-grid{grid-template-columns:1fr}.food-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.food-grid{grid-template-columns:1fr}}
+
+/* ── EVENT CARDS ── */
+.events-grid{max-width:1200px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px}
+.event-card{background:var(--white);border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden;transition:all var(--transition)}
+.event-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.event-card-img{height:220px;background:var(--navy-mid);position:relative;overflow:hidden}
+.event-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.event-card:hover .event-card-img img{transform:scale(1.05)}
+.event-date-badge{position:absolute;top:16px;right:16px;background:var(--gold);color:var(--navy);border-radius:4px;padding:8px 12px;text-align:center;font-family:var(--font-ui);z-index:2}
+.event-date-month{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.event-date-day{font-size:24px;font-weight:700;line-height:1}
+.event-card-body{padding:24px 28px}
+.event-card-type{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.event-card-title{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy);margin-bottom:10px}
+.event-card-desc{font-family:var(--font-body);font-size:16px;color:var(--text-mid);line-height:1.6;margin-bottom:20px}
+.event-card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(201,168,76,.15);padding-top:16px}
+.event-price{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--navy)}
+.event-price span{font-size:13px;color:var(--text-muted);font-family:var(--font-ui)}
+
+/* ── EVENTS PAGE — NEW LAYOUT ── */
+/* Intro block */
+.events-intro{background:var(--cream);padding:72px 48px 48px;text-align:center}
+.events-intro-title{font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:600;color:var(--navy);margin:12px 0 16px;line-height:1.15}
+.events-intro-sub{font-family:var(--font-body);font-size:19px;font-weight:300;color:var(--text-mid);max-width:580px;margin:0 auto;line-height:1.65}
+
+/* 3-column card grid */
+.ev-grid{background:var(--cream);padding:0 48px 72px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* Individual ev-card — image on top, text + outline button below (matching screenshot) */
+.ev-card{background:var(--white);border:1px solid rgba(201,168,76,.12);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:all var(--transition)}
+.ev-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(201,168,76,.35)}
+.ev-card-img{height:220px;overflow:hidden;position:relative;flex-shrink:0}
+.ev-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ev-card:hover .ev-card-img img{transform:scale(1.05)}
+.ev-card-body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1;border-top:3px solid var(--gold)}
+.ev-card-eyebrow{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.ev-card-title{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy);margin-bottom:12px;line-height:1.2}
+.ev-card-desc{font-family:var(--font-body);font-size:16px;color:var(--text-mid);line-height:1.6;margin-bottom:20px;flex:1}
+.ev-card-btn{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:transparent;color:var(--navy);border:1.5px solid var(--navy);cursor:pointer;padding:11px 20px;border-radius:2px;transition:all var(--transition);align-self:flex-start}
+.ev-card-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+
+/* Custom event form section */
+.custom-event-section{background:var(--navy);padding:80px 48px}
+.events-footer-clean-sep{background:var(--navy);padding:36px 48px 0}
+.events-footer-clean-sep::after{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.35) 20%,rgba(201,168,76,.65) 50%,rgba(201,168,76,.35) 80%,transparent)}
+.custom-event-inner{max-width:820px;margin:0 auto}
+.custom-event-title{font-family:var(--font-display);font-size:clamp(28px,3.5vw,44px);font-weight:600;color:var(--white);text-align:center;margin:12px 0 16px;line-height:1.2}
+.custom-event-sub{font-family:var(--font-body);font-size:18px;font-weight:300;color:rgba(255,255,255,.6);text-align:center;max-width:580px;margin:0 auto 48px;line-height:1.65}
+.custom-event-form{display:flex;flex-direction:column;gap:16px}
+.cev-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cev-group{display:flex;flex-direction:column;gap:6px}
+.cev-full{grid-column:1/-1}
+.cev-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.cev-input{font-family:var(--font-body);font-size:16px;color:var(--navy);background:var(--white);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:11px 14px;transition:border-color var(--transition);width:100%}
+.cev-input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12)}
+.cev-textarea{min-height:120px;resize:vertical;padding:12px 14px}
+
+@media(max-width:1024px){.ev-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.ev-grid{grid-template-columns:1fr;padding:0 24px 48px}.events-intro{padding:48px 24px 32px}.cev-row{grid-template-columns:1fr}.custom-event-section{padding:60px 24px}}
+/* ── ABOUT PAGE ── */
+.about-body{font-family:var(--font-body);font-size:19px;color:var(--text-mid);line-height:1.8;margin-bottom:28px}
+/* Section 1 — story */
+.about-story-section{background:var(--cream);padding:90px 48px}
+.about-story-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-story-img-wrap{position:relative;padding:0 0 18px 0}
+.about-story-img-wrap::before{content:'';position:absolute;bottom:0;left:-18px;width:100%;height:calc(100% - 18px);background:var(--navy);border-radius:4px;z-index:0}
+.about-story-img{width:100%;height:580px;object-fit:cover;object-position:center 20%;border-radius:4px;display:block;position:relative;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
+.about-story-img:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.25);}
+.about-story-content .section-eyebrow{color:var(--gold)}
+.about-story-content .section-title{margin-bottom:24px}
+/* Section 2 — vessel */
+.about-vessel-section{background:var(--navy);padding:90px 48px}
+.about-vessel-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-vessel-title{font-family:var(--font-display);font-size:44px;font-weight:600;color:var(--white);line-height:1.1;margin-bottom:12px}
+.about-vessel-title em{color:var(--gold);font-style:italic}
+.about-vessel-sub{font-family:var(--font-body);font-size:18px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px}
+.about-vessel-specs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.about-spec{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:12px 16px}
+.about-spec-label{font-family:var(--font-ui);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.about-spec-value{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--white)}
+.about-vessel-desc{font-family:var(--font-body);font-size:17px;color:rgba(255,255,255,.6);line-height:1.7}
+.about-vessel-img-wrap{position:relative;overflow:visible;padding:0 18px 18px 0}
+.about-vessel-img-wrap::before{content:'';position:absolute;bottom:0;right:0;width:calc(100% - 18px);height:calc(100% - 18px);background:var(--gold);border-radius:4px;z-index:0}
+.about-vessel-img{width:calc(100% - 18px);height:420px;object-fit:cover;border-radius:4px;display:block;position:absolute;top:0;left:0;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
+.about-vessel-img:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.25);}
+.about-vessel-img-wrap-sizer{height:420px;display:block;}
+.about-vessel-badge{position:absolute;bottom:-4px;right:4px;z-index:3;font-family:var(--font-display);font-size:13px;font-weight:500;font-style:italic;background:var(--gold);color:var(--navy);padding:9px 18px;border-radius:2px}
+/* Section 3 — captain */
+.about-captain-section{background:var(--cream);padding:90px 48px}
+.about-captain-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-captain-content .section-eyebrow{color:var(--gold)}
+.about-captain-content .section-title{margin-bottom:24px}
+.about-captain-socials{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.about-social-btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--navy);color:var(--gold);border:none;cursor:pointer;padding:13px 22px;border-radius:2px;text-decoration:none;transition:all var(--transition)}
+.about-social-btn:hover{background:var(--navy-light)}
+.about-social-btn svg{width:16px;height:16px;flex-shrink:0}
+.about-social-btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.about-social-btn-outline:hover{background:var(--navy);color:var(--gold)}
+.about-captain-img-wrap{position:relative;padding:0}
+.about-captain-img{width:100%;height:580px;object-fit:cover;object-position:center 15%;border-radius:4px;display:block;position:relative;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
+.about-captain-quote{margin-top:20px;font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--gold);text-align:center;padding:16px 0;border-top:1px solid rgba(201,168,76,.25)}
+@media(max-width:900px){
+  .about-story-inner,.about-vessel-inner,.about-captain-inner{grid-template-columns:1fr;gap:40px}
+  .about-story-img,.about-captain-img{height:360px}
+  .about-vessel-img{height:300px}
+  .about-story-img-wrap,.about-captain-img-wrap,.about-vessel-img-wrap{padding:0 0 24px 0}
+}
+
+/* ── FAQ PAGE ── */
+.faq-page{background:var(--cream);padding:60px 0 80px}
+.faq-page-inner{max-width:820px;margin:0 auto;padding:0 48px}
+.faq-category{margin-bottom:52px}
+.faq-cat-header{display:flex;align-items:center;gap:14px;margin-bottom:24px;padding-bottom:14px;border-bottom:2px solid var(--gold)}
+.faq-cat-icon{display:none}
+.faq-cat-icon-text{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.08em;border:1.5px solid var(--gold);border-radius:2px;padding:4px 9px;flex-shrink:0;line-height:1}
+.faq-cat-icon{width:38px;height:38px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.faq-cat-title{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--navy)}
+.faq-item{border-bottom:1px solid rgba(201,168,76,.2)}
+.faq-question{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:18px 0;font-family:var(--font-display);font-size:19px;font-weight:500;color:var(--navy);text-align:left;transition:color var(--transition)}
+.faq-question:hover{color:var(--navy-light)}
+.faq-icon{width:24px;height:24px;flex-shrink:0;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);transition:transform var(--transition);font-style:normal}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.faq-item.open .faq-answer{max-height:400px}
+.faq-answer-inner{padding:0 0 20px;font-family:var(--font-body);font-size:18px;color:var(--text-mid);line-height:1.7}
+
+/* ── SHOP ── */
+.shop-grid{max-width:1100px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
+.shop-card{background:var(--white);border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden;transition:all var(--transition)}
+.shop-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.shop-card-img{height:220px;background:var(--navy-mid);display:flex;align-items:center;justify-content:center}
+.shop-card-img svg{width:56px;opacity:.25}
+.shop-card-body{padding:20px 24px}
+.shop-card-title{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.shop-card-desc{font-family:var(--font-body);font-size:15px;color:var(--text-mid);line-height:1.6;margin-bottom:16px}
+.shop-card-footer{display:flex;align-items:center;justify-content:space-between}
+.shop-price{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy)}
+.shop-buy-btn{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--navy);color:var(--gold);border:none;cursor:pointer;padding:10px 16px;border-radius:2px;transition:background var(--transition)}
+.shop-buy-btn:hover{background:var(--navy-light)}
+
+/* ── NEW SHOP LAYOUT ── */
+.shop-grid-new{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:0 auto;padding:72px 48px 60px}
+.shop-card-new{background:var(--white);border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:all var(--transition)}
+.shop-card-new:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:rgba(201,168,76,.35)}
+.shop-card-img-new{height:260px;display:flex;align-items:center;justify-content:center;padding:20px}
+.shop-card-img-new svg{width:100%;max-width:160px;height:auto}
+.shop-card-body-new{padding:24px 28px 28px;display:flex;flex-direction:column;flex:1;border-top:1px solid rgba(201,168,76,.15)}
+.shop-card-color-dot{width:18px;height:18px;border-radius:50%;margin-bottom:10px}
+.shop-card-title-new{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy);margin-bottom:2px}
+.shop-card-color-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.shop-card-desc-new{font-family:var(--font-body);font-size:16px;color:var(--text-mid);line-height:1.6;margin-bottom:20px;flex:1}
+.shop-card-footer-new{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(201,168,76,.1)}
+.shop-price-new{font-family:var(--font-display);font-size:26px;font-weight:600;color:var(--navy)}
+.shop-order-btn{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:12px 20px;border-radius:2px;transition:all var(--transition)}
+.shop-order-btn:hover{background:var(--gold-light);color:var(--navy)}
+.shop-notify-section{background:var(--navy);padding:80px 48px 32px;text-align:center}
+.shop-notify-inner{max-width:540px;margin:0 auto}
+.shop-notify-title{font-family:var(--font-display);font-size:clamp(28px,3.5vw,42px);font-weight:600;color:var(--white);margin:12px 0 14px;line-height:1.15}
+.shop-notify-sub{font-family:var(--font-body);font-size:18px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:36px}
+.shop-notify-form{display:flex;gap:0;max-width:440px;margin:0 auto 12px}
+.shop-notify-input{flex:1;font-family:var(--font-body);font-size:16px;color:var(--navy);background:var(--white);border:none;border-radius:2px 0 0 2px;padding:14px 18px;outline:none}
+.shop-notify-btn{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:14px 22px;border-radius:0 2px 2px 0;white-space:nowrap;transition:background var(--transition)}
+.shop-notify-btn:hover{background:var(--gold-light)}
+.shop-notify-fine{font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,.3)}
+@media(max-width:900px){.shop-grid-new{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.shop-grid-new{grid-template-columns:1fr;padding:40px 24px}.shop-notify-form{flex-direction:column}.shop-notify-input,.shop-notify-btn{border-radius:2px;width:100%}}
+
+/* ── MENU PAGE ── */
+.menu-page{background:var(--cream);padding:60px 0 80px}
+.menu-page-inner{max-width:760px;margin:0 auto;padding:0 48px}
+.menu-section{margin-bottom:60px}
+.menu-section-group{background:transparent;border-radius:0;padding:0;margin-bottom:60px}
+.menu-section-group .menu-section-title{color:var(--navy)}
+
+.menu-section-group .menu-item-name{color:var(--navy)}
+.menu-section-group .menu-item-price{color:var(--navy)}
+
+.menu-section-header{text-align:center;margin-bottom:28px}
+.menu-section-eyebrow{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.menu-section-title{font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--navy);margin-bottom:14px}
+.menu-flourish{display:flex;justify-content:center;margin-top:8px}
+.menu-flourish svg{width:100%;max-width:300px;height:30px}
+.menu-items{display:flex;flex-direction:column;gap:0}
+.menu-item{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(201,168,76,.18)}
+.menu-item:last-child{border-bottom:none}
+.menu-item-left{flex:1}
+.menu-item-name{font-family:var(--font-display);font-size:19px;font-weight:500;color:var(--navy);line-height:1.2}
+.menu-item-desc{font-family:var(--font-body);font-size:14px;color:var(--text-muted);line-height:1.5;margin-top:3px;font-style:italic}
+.menu-item-price{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--navy);white-space:nowrap;padding-top:2px;flex-shrink:0}
+.menu-item-featured .menu-item-name{font-size:18px}
+.menu-two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:24px}
+.menu-partners-note{text-align:center;padding:40px 0 20px;border-top:1px solid rgba(201,168,76,.2)}
+.menu-partners-note p{font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--text-mid);line-height:1.6;margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
+.menu-partners-logos{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.menu-partner-tag{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--navy);border:1.5px solid rgba(13,31,60,.25);border-radius:2px;padding:6px 14px}
+.menu-partner-link{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);border:1.5px solid rgba(13,31,60,.25);border-radius:2px;padding:8px 16px;text-decoration:none;transition:all var(--transition)}
+.menu-partner-link:hover{border-color:var(--gold);color:var(--gold)}
+.menu-tagline{text-align:center;font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--gold);padding:20px 0 0;opacity:.8}
+@media(max-width:640px){.menu-two-col{grid-template-columns:1fr}.menu-page-inner{padding:0 24px}}
+.contact-layout{max-width:1100px;margin:0 auto;padding:72px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.contact-info-title{font-family:var(--font-display);font-size:36px;font-weight:600;color:var(--navy);margin-bottom:16px}
+.contact-info-sub{font-family:var(--font-body);font-size:19px;color:var(--text-mid);line-height:1.6;margin-bottom:40px}
+.contact-follow-btns{display:flex;flex-wrap:wrap;gap:10px}
+.contact-follow-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);border:1.5px solid rgba(13,31,60,.25);border-radius:2px;padding:9px 14px;text-decoration:none;transition:all var(--transition)}
+.contact-follow-btn svg{width:14px;height:14px;flex-shrink:0}
+.contact-follow-btn:hover{border-color:var(--gold);color:var(--gold)}
+.contact-detail{display:flex;align-items:flex-start;gap:16px}
+.contact-icon{width:40px;height:40px;flex-shrink:0;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:2px;display:flex;align-items:center;justify-content:center}
+.contact-icon svg{width:18px;color:var(--gold)}
+.contact-detail-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.contact-detail-value{font-family:var(--font-body);font-size:18px;color:var(--navy)}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text-mid)}
+.form-input,.form-select,.form-textarea{font-family:var(--font-body);font-size:17px;color:var(--navy);border:1px solid rgba(201,168,76,.3);background:var(--white);border-radius:2px;padding:12px 16px;transition:border-color var(--transition);width:100%}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.form-textarea{resize:vertical;min-height:120px}
+.form-submit{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:16px 32px;border-radius:2px;transition:all var(--transition);align-self:flex-start}
+.form-submit:hover{background:var(--gold-light)}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:60px 48px 32px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:24px}
+.footer-brand-name{font-family:var(--font-display);font-size:22px;color:var(--gold);margin-bottom:6px;cursor:pointer}
+.footer-brand-name em{color:var(--white);font-style:italic}
+.footer-brand-quote{font-family:var(--font-display);font-size:15px;font-style:italic;color:var(--gold);margin-bottom:10px;opacity:.9}
+.footer-tagline{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:20px}
+.footer-col-title{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-link{font-family:var(--font-ui);font-size:12px;color:rgba(255,255,255,.55);cursor:pointer;background:none;border:none;padding:0;text-align:left;transition:color var(--transition);text-decoration:none}
+.footer-link:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,.3)}
+/* Social icons */
+.footer-social{display:flex;gap:12px;align-items:center}
+.footer-social-link{width:36px;height:36px;border:1px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;text-decoration:none;flex-shrink:0}
+.footer-social-link:hover{border-color:var(--gold);background:rgba(201,168,76,.1)}
+.footer-social-link svg{width:16px;height:16px;fill:rgba(255,255,255,.55);transition:fill .3s}
+.footer-social-link:hover svg{fill:var(--gold)}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(13,31,60,.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.booking-modal{background:var(--white);border-radius:6px;overflow:hidden;width:100%;max-width:920px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(13,31,60,.4);animation:modalIn .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes modalIn{from{opacity:0;transform:scale(.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-header{background:var(--navy);padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
+.modal-header-left h2{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--white)}
+.modal-header-left p{font-family:var(--font-ui);font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;letter-spacing:.05em}
+.modal-close{width:36px;height:36px;background:rgba(255,255,255,.1);border:none;cursor:pointer;border-radius:50%;color:rgba(255,255,255,.7);font-size:18px;display:flex;align-items:center;justify-content:center;transition:background var(--transition)}
+.modal-close:hover{background:rgba(255,255,255,.2);color:var(--white)}
+.modal-body{display:flex}
+.modal-sidebar{width:240px;flex-shrink:0;background:#f7f4ef;border-right:1px solid rgba(201,168,76,.15);padding:24px 20px}
+.sidebar-charter-name{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.sidebar-charter-type{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.sidebar-img{width:100%;height:120px;background:var(--navy-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.sidebar-img svg{width:48px;opacity:.25}
+.sidebar-features{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.sidebar-feature{font-family:var(--font-ui);font-size:11px;color:var(--text-mid);display:flex;align-items:center;gap:8px}
+.sidebar-feature::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.booking-summary-box{background:var(--white);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:14px;display:none}
+.booking-summary-box.visible{display:block}
+.bs-title{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.bs-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;font-family:var(--font-ui)}
+.bs-row span:first-child{color:var(--text-muted)}
+.bs-total{border-top:1px solid rgba(201,168,76,.2);padding-top:8px;margin-top:6px;font-weight:600;font-size:14px}
+.modal-main{flex:1;padding:28px 32px;overflow-y:auto}
+.step-bar{display:flex;align-items:center;margin-bottom:28px}
+.step-node{display:flex;align-items:center;gap:8px;font-family:var(--font-ui);font-size:11px;font-weight:500;color:var(--text-muted)}
+.step-node.active{color:var(--navy);font-weight:600}
+.step-node.done{color:var(--gold)}
+.step-circle{width:26px;height:26px;border-radius:50%;background:#eee;border:1.5px solid #ddd;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:var(--text-muted);flex-shrink:0}
+.step-node.active .step-circle{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.step-node.done .step-circle{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.step-connector{flex:1;height:1px;background:#ddd;margin:0 8px}
+.step-title{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--navy);margin-bottom:20px}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month-label{font-family:var(--font-ui);font-size:13px;font-weight:600;color:var(--navy)}
+.cal-arrow{width:30px;height:30px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:4px;cursor:pointer;font-size:16px;color:var(--text-mid);display:flex;align-items:center;justify-content:center}
+.cal-arrow:hover{background:#ebe8e0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;max-width:320px}
+.cal-day-label{text-align:center;font-family:var(--font-ui);font-size:10px;font-weight:600;color:var(--text-muted);padding:6px 0;letter-spacing:.05em}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:4px;font-family:var(--font-ui);font-size:13px;cursor:pointer;color:var(--navy);position:relative;transition:all .15s}
+.cal-day:hover:not(.empty):not(.past){background:rgba(201,168,76,.15)}
+.cal-day.empty{cursor:default}
+.cal-day.past{color:#ccc;cursor:default}
+.cal-day.has-avail::after{content:'';position:absolute;bottom:4px;width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.cal-day.selected{background:var(--navy);color:var(--white)}
+.cal-day.selected::after{background:var(--gold)}
+.time-slots-wrap{margin-top:24px}
+.time-slots-label{font-family:var(--font-ui);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px}
+.time-slots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.time-slot-btn{border:1px solid #e0e0e0;border-radius:4px;padding:10px 8px;cursor:pointer;text-align:center;background:var(--white);transition:all .15s}
+.time-slot-btn:hover{border-color:var(--navy)}
+.time-slot-btn.selected{border-color:var(--navy);background:var(--navy);color:var(--white)}
+.time-slot-btn.selected .slot-avail{color:rgba(255,255,255,.6)}
+.slot-time-text{font-family:var(--font-ui);font-size:13px;font-weight:600;color:inherit}
+.slot-avail{font-family:var(--font-ui);font-size:10px;color:var(--text-muted);margin-top:3px}
+.guest-rows{border:1px solid rgba(201,168,76,.15);border-radius:4px;overflow:hidden}
+.guest-row{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(201,168,76,.1)}
+.guest-row:last-child{border-bottom:none}
+.guest-name{font-family:var(--font-display);font-size:17px;font-weight:500;color:var(--navy)}
+.guest-price-label{font-family:var(--font-ui);font-size:11px;color:var(--text-muted)}
+.guest-counter{display:flex;align-items:center;gap:14px}
+.counter-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--navy);background:transparent;color:var(--navy);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition);line-height:1}
+.counter-btn:hover{background:var(--navy);color:var(--white)}
+.counter-val{font-family:var(--font-ui);font-size:16px;font-weight:600;min-width:22px;text-align:center}
+.addons-list{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.addon-row{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid rgba(201,168,76,.15);border-radius:4px;cursor:pointer;transition:border-color .15s}
+.addon-row:hover{border-color:var(--navy)}
+.addon-row.selected{border-color:var(--navy);background:#f5f8fc}
+.addon-check{width:20px;height:20px;flex-shrink:0;border:1.5px solid #ccc;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.addon-row.selected .addon-check{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.addon-name-text{font-family:var(--font-ui);font-size:13px;font-weight:500;color:var(--navy);flex:1}
+.addon-price-tag{font-family:var(--font-ui);font-size:13px;color:var(--text-muted)}
+.modal-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.modal-form-group{display:flex;flex-direction:column;gap:5px}
+.modal-form-group.full{grid-column:1/-1}
+.modal-form-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+.modal-form-input,.modal-form-select,.modal-form-textarea{height:38px;border:1px solid #e0d8c8;border-radius:4px;padding:0 12px;font-family:var(--font-body);font-size:16px;color:var(--navy);background:var(--white)}
+.modal-form-input:focus,.modal-form-select:focus{outline:none;border-color:var(--gold)}
+.modal-form-textarea{height:80px;padding:10px 12px;resize:vertical}
+.card-brand-row{display:flex;gap:8px;margin-bottom:16px;align-items:center}
+.card-brand{height:28px;padding:0 8px;border:1px solid #e0e0e0;border-radius:4px;background:#fafafa;display:flex;align-items:center;font-family:var(--font-ui);font-size:10px;font-weight:700;color:var(--text-muted)}
+.stripe-note{background:#f5f8fc;border:1px solid #d0dcea;border-radius:4px;padding:12px 14px;font-family:var(--font-ui);font-size:12px;color:var(--text-mid);line-height:1.5;margin:14px 0;display:flex;gap:10px;align-items:flex-start}
+.policy-note{background:#fdf9f0;border:1px solid rgba(201,168,76,.25);border-radius:4px;padding:12px 14px;font-family:var(--font-ui);font-size:12px;color:var(--text-mid);line-height:1.5;margin-bottom:14px}
+.policy-note strong{color:var(--navy)}
+.modal-nav{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid rgba(201,168,76,.15);margin-top:24px}
+.modal-btn-back{font-family:var(--font-ui);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;background:transparent;border:1px solid #ddd;color:var(--text-mid);cursor:pointer;padding:11px 20px;border-radius:4px;transition:all var(--transition)}
+.modal-btn-back:hover{border-color:var(--navy);color:var(--navy)}
+.modal-btn-next{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--navy);color:var(--gold);border:none;cursor:pointer;padding:12px 28px;border-radius:4px;transition:all var(--transition)}
+.modal-btn-next:hover{background:var(--navy-light)}
+.modal-btn-next:disabled{background:#ccc;color:#999;cursor:default}
+.modal-btn-confirm{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:12px 28px;border-radius:4px;transition:all var(--transition)}
+.modal-btn-confirm:hover{background:var(--gold-light)}
+.confirm-screen{text-align:center;padding:48px 20px}
+.confirm-check{width:72px;height:72px;border-radius:50%;background:rgba(201,168,76,.12);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:30px;color:var(--gold)}
+.confirm-title{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.confirm-sub{font-family:var(--font-body);font-size:18px;color:var(--text-mid);line-height:1.6;margin-bottom:28px}
+.confirm-details-box{background:#f7f4ef;border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:20px 24px;max-width:360px;margin:0 auto 24px;text-align:left}
+.confirm-row{display:flex;justify-content:space-between;font-family:var(--font-ui);font-size:13px;padding:5px 0}
+.confirm-row span:first-child{color:var(--text-muted)}
+.confirm-row.total-row{border-top:1px solid rgba(201,168,76,.2);padding-top:10px;margin-top:6px;font-weight:600;font-size:14px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+@media(max-width:900px){
+  #site-nav{padding:0 24px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .charter-card{grid-template-columns:1fr}
+  .vessel-inner,.story-inner,.contact-layout{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+  .modal-body{flex-direction:column}
+  .modal-sidebar{width:100%;border-right:none;border-bottom:1px solid rgba(201,168,76,.15)}
+  .modal-main{padding:20px}
+  .section{padding:60px 24px}
+  .review-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr}
+  .modal-form-grid,.form-row{grid-template-columns:1fr}
+  .modal-form-group.full{grid-column:1}
+  .charters-grid,.events-grid{padding:40px 20px}
+  .page-hero{height:320px}
+}
+
+/* ── FAQ CONTACT CTA ── */
+.faq-contact-cta{background:var(--navy);padding:72px 48px 32px;text-align:center}
+.faq-contact-inner{max-width:520px;margin:0 auto}
+.faq-contact-ornament{font-size:14px;color:var(--gold);opacity:.6;margin-bottom:16px;letter-spacing:4px}
+.faq-contact-title{font-family:var(--font-display);font-size:clamp(24px,3vw,36px);font-weight:600;color:var(--white);margin-bottom:12px}
+.faq-contact-sub{font-family:var(--font-body);font-size:18px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:28px}
+
+/* ── SECTION SEPARATORS ── */
+.shop-footer-sep{background:var(--navy);padding:16px 48px 0;text-align:center}
+.shop-footer-sep::before{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.25) 10%,rgba(201,168,76,.55) 50%,rgba(201,168,76,.25) 90%,transparent);margin-bottom:28px}
+.shop-footer-sep-ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:28px}
+.shop-footer-sep-line{flex:1;max-width:180px;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.4))}
+.shop-footer-sep-line.right{background:linear-gradient(to left,transparent,rgba(201,168,76,.4))}
+.shop-footer-sep-diamond{color:var(--gold);font-size:11px;opacity:.75;letter-spacing:6px}
+.shop-footer-sep::after{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.2) 20%,rgba(201,168,76,.4) 50%,rgba(201,168,76,.2) 80%,transparent);margin-top:28px}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="site-nav">
+  <div class="nav-logo" onclick="navigate('home')">Newport <span>Boat Adventures</span></div>
+  <div class="nav-links">
+    <button class="nav-link active" data-page="home" onclick="navigate('home')">Home</button>
+    <button class="nav-link" data-page="charters" onclick="navigate('charters')">Charters</button>
+    <button class="nav-link" data-page="events" onclick="navigate('events')">Events</button>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-trigger" onclick="navigate('about')">About <span class="nav-caret">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="navigate('about')">Our Story</button>
+        <button class="nav-dropdown-item" onclick="navigate('faq')">FAQ</button>
+        <button class="nav-dropdown-item" onclick="navigate('menu')">Menu</button>
+      </div>
+    </div>
+    <button class="nav-link" data-page="shop" onclick="navigate('shop')">Shop</button>
+    <button class="nav-link" data-page="contact" onclick="navigate('contact')">Contact</button>
+    <button class="nav-book-btn" onclick="navigate('contact')">Book Now</button>
+  </div>
+  <button class="nav-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-nav-link" onclick="navigate('home');closeMobileMenu()">Home</button>
+  <button class="mobile-nav-link" onclick="navigate('charters');closeMobileMenu()">Charters</button>
+  <button class="mobile-nav-link" onclick="navigate('events');closeMobileMenu()">Events</button>
+  <button class="mobile-nav-link" onclick="navigate('about');closeMobileMenu()">About</button>
+  <button class="mobile-sub" onclick="navigate('about');closeMobileMenu()">Our Story</button>
+  <button class="mobile-sub" onclick="navigate('faq');closeMobileMenu()">FAQ</button>
+  <button class="mobile-sub" onclick="navigate('menu');closeMobileMenu()">Menu</button>
+  <button class="mobile-nav-link" onclick="navigate('shop');closeMobileMenu()">Shop</button>
+  <button class="mobile-nav-link" onclick="navigate('contact');closeMobileMenu()">Contact</button>
+  <button class="nav-book-btn" style="align-self:flex-start" onclick="openBooking('sunset-sail');closeMobileMenu()">Book Now</button>
+</div>
+
+<!-- shared footer snippet stored as template -->
+<template id="footer-tpl">
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name" onclick="navigate('home')" style="cursor:pointer;transition:opacity .2s" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Newport <em>Boat Adventures</em></div>
+          <p class="footer-brand-quote">&ldquo;No Bad Days on the Water&rdquo;</p>
+          <p class="footer-tagline">Family-owned and operated in Newport, RI. Sharing our love for the ocean, one charter at a time.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Explore</div>
+          <div class="footer-links">
+            <button class="footer-link" onclick="navigate('charters')">Charters</button>
+            <button class="footer-link" onclick="navigate('events')">Events</button>
+            <button class="footer-link" onclick="navigate('about')">Our Story</button>
+            <button class="footer-link" onclick="navigate('faq')">FAQ</button>
+            <button class="footer-link" onclick="navigate('shop')">Shop</button>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Experiences</div>
+          <div class="footer-links">
+            <button class="footer-link" onclick="openBooking('sunset-sail')">Sunset Sail</button>
+            <button class="footer-link" onclick="openBooking('half-day')">Half-Day Charter</button>
+            <button class="footer-link" onclick="openBooking('full-day')">Full-Day Charter</button>
+            <button class="footer-link" onclick="openBooking('fishing')">Fishing Trip</button>
+            <button class="footer-link" onclick="openBooking('celebration')">Celebrations</button>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-links">
+            <span class="footer-link" style="cursor:default">Newport, Rhode Island</span>
+            <span class="footer-link" style="cursor:default">(401) 830-3839</span>
+            <a class="footer-link" href="/cdn-cgi/l/email-protection#610f0416110e1315030e0015000517040f1514130412130821060c00080d4f020e0c" style="text-decoration:none">Email Us</a>
+            <button class="footer-link" onclick="navigate('contact')">Get in Touch</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Newport Boat Adventures. All rights reserved.</span>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.instagram.com/newport_boat_adventures_ri" target="_blank" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a class="footer-social-link" href="https://www.google.com/search?q=newport+boat+adventures+&sca_esv=21a6b12fa57c4177&rlz=1C1RXQR_enUS1165US1165&ei=GNDCaZaKH6ja5NoPzI7LEA&oq=newport+boat+adventures+" target="_blank" title="Google Reviews">
+            <svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+          </a>
+          <a class="footer-social-link" href="https://www.tiktok.com/@newportboatadventures" target="_blank" title="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-waves">
+      <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+        <path d="M0,400 C360,300 720,500 1080,350 C1260,275 1380,320 1440,300 L1440,800 L0,800 Z" fill="rgba(201,168,76,0.5)"/>
+        <path d="M0,500 C240,420 480,560 720,480 C960,400 1200,480 1440,440 L1440,800 L0,800 Z" fill="rgba(201,168,76,0.3)"/>
+        <path d="M0,600 C300,560 600,620 900,580 C1050,560 1260,580 1440,560 L1440,800 L0,800 Z" fill="rgba(201,168,76,0.15)"/>
+      </svg>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Newport, Rhode Island</div>
+      <h1 class="hero-title">Your Day on the<br><em>Water Starts Here</em></h1>
+      <p class="hero-subtitle">Private Charters in Newport, RI</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="navigate('charters')">Explore Charters</button>
+        <button class="btn-outline" onclick="navigate('events')">View Events</button>
+      </div>
+    </div>
+    <div class="hero-scroll"><span>Explore</span><div class="scroll-line"></div></div>
+    <!-- Curved wave into next section -->
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,18 1440,48 L1440,72 L0,72 Z" fill="#faf7f2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- CHARTERS PREVIEW -->
+  <div class="section">
+    <div class="section-eyebrow">Experience Newport by Sea</div>
+    <h2 class="section-title">Crafted <em>Experiences</em><br>on the Water</h2>
+    <p class="section-sub">From sunset sails to private celebrations — every charter is tailored to you.</p>
+    <div class="experience-grid">
+      <div class="exp-card" onclick="navigate('contact')">
+                <div class="exp-card-img">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Half%20Day%20-%20Charters.jpg" alt="Full-Day Charter">
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-title">Full-Day Charter</div>
+          <div class="exp-card-desc">Eight hours of complete freedom — multiple destinations, swim stops, and memories that last a lifetime.</div>
+          <div class="exp-card-meta" style="align-items:flex-start">
+            <div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$1,250</div>
+              <div class="exp-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="exp-price-max">Max 12 guests total</span></div>
+            </div>
+            <button class="exp-book-btn" style="flex-shrink:0">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card" onclick="navigate('contact')">
+                <div class="exp-card-img">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Half%20Day%20adventure%20-%20Home.jpg" alt="Half-Day Charter">
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-title">Half-Day Charter</div>
+          <div class="exp-card-desc">Four hours with the whole boat to yourselves. Custom itinerary, swim stops, and open water exploring.</div>
+          <div class="exp-card-meta" style="align-items:flex-start">
+            <div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$699</div>
+              <div class="exp-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="exp-price-max">Max 12 guests total</span></div>
+            </div>
+            <button class="exp-book-btn" style="flex-shrink:0">Book Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card" onclick="navigate('contact')">
+                                        <div class="exp-card-img">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sunset%20Cruise%20-%20Home.jpg" alt="Sunset Cruise">
+          <span class="exp-card-img-label">Scenic Cruise</span>
+        </div>
+        <div class="exp-card-body">
+          <div class="exp-card-title">Sunset Cruise</div>
+          <div class="exp-card-desc">Two golden hours gliding past the Newport mansions as the sun dips below Narragansett Bay.</div>
+          <div class="exp-card-meta" style="align-items:flex-start">
+            <div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$449</div>
+              <div class="exp-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="exp-price-max">Max 12 guests total</span></div>
+              <div class="exp-price-couples">Couples special: $349</div>
+            </div>
+            <button class="exp-book-btn" style="flex-shrink:0">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px">
+      <button class="btn-navy-outline" onclick="navigate('charters')">Explore All Charters →</button>
+    </div>
+  </div>
+
+  <!-- VESSEL -->
+  <div class="vessel-section">
+    <div class="vessel-inner">
+      <div class="vessel-img">
+        <img class="photo-shadow-gold" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%202%20-%20Home.png" alt="One Day - Grady White">
+        <span class="vessel-img-badge">One Day &mdash; 33&rsquo; Grady White</span>
+      </div>
+      <div class="vessel-content">
+        <div class="section-eyebrow" style="color:var(--gold)">Meet the Boat</div>
+        <h2 class="vessel-title">The <em>One Day</em></h2>
+        <p class="vessel-sub">A meticulously maintained 33-foot Grady White built for comfort and performance on Narragansett Bay and beyond.</p>
+        <div class="vessel-specs">
+          <div class="spec-item"><div class="spec-label">Vessel</div><div class="spec-value">33&rsquo; Grady White</div></div>
+          <div class="spec-item"><div class="spec-label">Capacity</div><div class="spec-value">Up to 12 guests</div></div>
+          <div class="spec-item"><div class="spec-label">Home Port</div><div class="spec-value">Newport, RI</div></div>
+          <div class="spec-item"><div class="spec-label">USCG Licensed</div><div class="spec-value">Captain</div></div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="navigate('contact')">Book One Day</button>
+          <button class="btn-outline-vessel" onclick="navigate('about')">Learn More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUR STORY (matching screenshot: photo left with gold accent bar, text right) -->
+  <div class="story-section">
+    <div class="story-inner">
+      <div class="story-img-wrap">
+        <div class="story-img-frame">
+          <img class="photo-shadow-navy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=653,fit=crop/YX4Xw9bQwxu14lND/img_4413-AVL1xNOVWbT4wQ3K.jpeg" alt="Captain Nik and brother at the dock">
+        </div>
+        <div class="story-gold-bar"></div>
+      </div>
+      <div class="story-content">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-title">At Home on<br><em>Narragansett Bay</em></h2>
+        <p class="story-text">Growing up by the water, Captain Nik and his brother spent their days surfing, fishing, and sailing around the bay. What started with an old Boston Whaler grew into a mission: share that authentic love of the ocean with everyone who steps on board.</p>
+        <div class="story-divider"></div>
+        <p class="story-text">As a family-run business, every trip is an opportunity to create genuine connection and lasting memories on the water.</p>
+        <div class="story-btns">
+          <button class="btn-primary" onclick="navigate('about')">Our Story</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials-section">
+    <div class="testimonials-inner">
+      <div class="section-eyebrow">Guest Stories</div>
+      <h2 class="section-title" style="margin-bottom:12px;color:var(--white)">What Our <em>Guests</em> Say</h2>
+      <p style="font-family:var(--font-body);font-size:18px;color:rgba(255,255,255,0.55);margin-bottom:40px">Real reviews from real guests — all 5 stars.</p>
+      <div class="review-row" id="reviewRow0">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Such a fun way to see Newport! The boat was super comfortable and the crew made everything really easy. Loved cruising around the harbor and seeing Castle Hill from the water — such a cool perspective.</p><div class="testimonial-author">— Cassie M.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">My girlfriend and I had a wonderful time with Captain Nik. Very memorable day. The service and boat ride was 10/10. Great views and great prices — highly recommend for a boat experience in Newport!</p><div class="testimonial-author">— Nana A.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Couldn't have asked for a better evening! Nick was friendly, professional and safe — a wonderful tour around Newport Harbor. It was a highlight of our weekend. Absolutely recommend!</p><div class="testimonial-author">— Michael C.</div></div>
+      </div>
+      <div class="review-row" id="reviewRow1" style="display:none">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Super fun experience. Did the sunset cruise for a bachelorette party and it was beautiful views. Nick was a great host and captain!</p><div class="testimonial-author">— Sarah S.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">We had a great day out on the water. Nik picked a perfect spot for a boat picnic and took us tubing — super fun. We saw some amazing sailboats too. Would definitely love to do it again!</p><div class="testimonial-author">— Sophie G.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Great local guys who know the area and know how to find fun no matter what you're in the mood for. Good, skilled, safe boating. Highly recommend a jaunt around Newport with this company.</p><div class="testimonial-author">— Jeff G.</div></div>
+      </div>
+      <div class="review-row" id="reviewRow2" style="display:none">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Amazing day on the boat! Lucas was so easy to work with and accommodating. Nik was a great captain — I trusted him right away. Can't wait to do it again!</p><div class="testimonial-author">— Jacey M.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Incredible sunset cruise with my girlfriends. Nik and Lucas were so professional and we highly recommend them! Great music, a lovely tour around Newport — it was the best!</p><div class="testimonial-author">— Cole G.</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">Fabulous time — this added a great memory for myself and my niece while she was here in RI for a visit! Highly recommend for a safe, fun, affordable experience. Wonderful in every way!</p><div class="testimonial-author">— Beverly G.</div></div>
+      </div>
+      <div class="review-dots">
+        <button class="review-dot active" onclick="goReviewRow(0)" id="dot0"></button>
+        <button class="review-dot" onclick="goReviewRow(1)" id="dot1"></button>
+        <button class="review-dot" onclick="goReviewRow(2)" id="dot2"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OCCASIONS BANNER -->
+  <div class="occasions-banner">
+    <div class="occasions-bg" style="background-image:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=754,fit=crop/YX4Xw9bQwxu14lND/jazz-fest-YD0p5pakOzIB2Z1D.png')"></div>
+    <div class="occasions-overlay"></div>
+    <div class="occasions-content">
+      <div class="section-eyebrow" style="color:var(--gold);justify-content:center">Special Occasions</div>
+      <h2 class="occasions-title">Good Times Start Here</h2>
+      <p class="occasions-sub">Bachelorettes, birthdays, corporate outings &amp; more — start your celebration on the water.</p>
+      <button class="btn-primary" onclick="navigate('events')">Explore All Events</button>
+    </div>
+  </div>
+
+  <div id="footer-home"></div>
+</div>
+
+<!-- ══════════════ CHARTERS PAGE ══════════════ -->
+<div id="page-charters" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Charters.JPG')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Aboard One Day</div>
+      <h1 class="page-hero-title">Our <em>Charters</em></h1>
+      <p class="page-hero-sub">Every experience is private, personalized, and crafted for you.</p>
+    </div>
+    <div class="section-wave">
+      <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg>
+    </div>
+  </div>
+
+  <!-- CHARTER CARDS: Full-Day, Half-Day, Sunset Cruise, Morning Cruise, Fishing Charter -->
+  <div class="charters-grid">
+
+    <!-- 1. Full-Day -->
+    <div class="charter-card">
+      <div class="charter-card-img" style="background:#0f2240"><img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Full%20Day%20-%20Charters.png" alt="Full Day Charter"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Full-Day Charter</div><h3 class="charter-card-title">All-Day Voyage</h3><p class="charter-card-desc">Eight hours of complete freedom on the water. Pack lunch, bring snorkel gear, or simply let the day unfold. The ultimate Newport experience for groups who want it all.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Multiple destinations</span><span class="charter-feature">Catering add-on available</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$1,250</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+      </div>
+    </div>
+
+    <!-- 2. Half-Day -->
+    <div class="charter-card">
+      <div class="charter-card-img" style="background:#162d52"><img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Full%20Day%20-%20Home.jpg" alt="Half-Day Charter"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Half-Day Charter</div><h3 class="charter-card-title">Half-Day Adventure</h3><p class="charter-card-desc">Four hours of open water with the whole boat to yourselves. Cruise to Block Island, explore the Sakonnet River, or anchor in a secluded cove — your call entirely.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">4 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Custom itinerary</span><span class="charter-feature">Swim stop available</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$699</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+      </div>
+    </div>
+
+    <!-- 3. Sunset Cruise -->
+    <div class="charter-card">
+      <div class="charter-card-img"><img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sunset%20Cruise%20-%20Charters.jpg" alt="Sunset Cruise"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Scenic Cruise</div><h3 class="charter-card-title">Sunset Cruise</h3><p class="charter-card-desc">Two hours of pure Newport magic. Watch the sun set over the mansions, lighthouses, and harbor as you glide across Narragansett Bay. Complimentary light refreshments included.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">2 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Refreshments included</span><span class="charter-feature">USCG Licensed Captain</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$449</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Couples special: $349</div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+      </div>
+    </div>
+
+    <!-- 4. Morning Cruise -->
+    <div class="charter-card">
+      <div class="charter-card-img"><img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Morning%20Cruise%20-%20Home.JPEG" alt="Morning Cruise"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Scenic Cruise</div><h3 class="charter-card-title">Morning Cruise</h3><p class="charter-card-desc">Start your day right on the calm waters of Narragansett Bay. 1½ hours of peaceful cruising through Newport Harbor before the crowds arrive — coffee in hand, sea breeze in the air.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">1½ Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Calm harbor waters</span><span class="charter-feature">USCG Licensed Captain</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$299</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Couples special: $249</div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+      </div>
+    </div>
+
+    <!-- 5. Fishing Charter -->
+    <div class="charter-card">
+      <div class="charter-card-img" style="background:#14304e"><img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Fishing%20Charter%20-%20Charters.jpeg" alt="Fishing Charter"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Private Fishing Charter</div><h3 class="charter-card-title">Fishing Charter</h3><p class="charter-card-desc">Target striped bass, bluefish, and more in the legendary waters off Newport. Rods, tackle, and local knowledge provided. Catch-and-release or take your haul home.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">4 or 8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Gear provided</span><span class="charter-feature">Keep your catch</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers · 4 hours</span>$899</div><div class="charter-price-sub">+$110 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Full day (8 hrs): $1,500</div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOD PARTNERSHIPS SECTION -->
+  <div class="food-section" style="border-top:3px solid var(--gold);margin-top:0">
+    <div class="food-inner">
+      <div class="section-eyebrow" style="justify-content:center;color:var(--gold)">On-Board Dining</div>
+      <h2 class="section-title" style="text-align:center;color:var(--white)">Eat Well. Cruise Better.</h2>
+      <p class="food-intro">We've partnered with the best local names in Newport to bring restaurant-quality food directly to your charter. Add any of these to your booking and arrive hungry.</p>
+      <div class="food-grid">
+
+        <div class="food-card">
+          <div class="food-card-icon">🧀</div>
+          <div class="food-card-body">
+            <div class="food-card-eyebrow">Our Own</div>
+            <div class="food-card-title">Charcuterie Board</div>
+            <p class="food-card-desc">Our signature spread — curated cheeses, cured meats, fresh fruit, and artisan crackers. The perfect deck-side snack for any occasion.</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-icon">🍕</div>
+          <div class="food-card-body">
+            <div class="food-card-eyebrow">Imbriglia's</div>
+            <div class="food-card-title">Newport Pizza</div>
+            <p class="food-card-desc">Fresh-baked pies from one of Newport's most beloved neighborhood restaurants. Hot, hearty, and perfect for a full-day charter out on the water.</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-icon">🥪</div>
+          <div class="food-card-body">
+            <div class="food-card-eyebrow">Newport Sandwich Co.</div>
+            <div class="food-card-title">Artisan Sandwiches</div>
+            <p class="food-card-desc">Handcrafted sandwiches stacked high with local ingredients. Freshly made and packed for your trip — satisfying without the fuss.</p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <div class="food-card-icon">🦞</div>
+          <div class="food-card-body">
+            <div class="food-card-eyebrow">Newport Chowder Co.</div>
+            <div class="food-card-title">Award-Winning Lobster Rolls &amp; Clam Chowder</div>
+            <p class="food-card-desc">Multiple award-winning lobster rolls and the richest clam chowder on the Rhode Island coast. A true Newport classic — enjoyed even better on the water.</p>
+          </div>
+        </div>
+
+      </div>
+      <p class="food-note">Add catering to any charter at checkout, or contact us to customize your spread.</p>
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn-primary" onclick="navigate('menu')">View Our Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARTER PAGE REVIEWS -->
+  <div class="charter-reviews-section">
+    <div class="charter-reviews-inner">
+      <div class="section-eyebrow" style="justify-content:center">Guest Reviews</div>
+      <h2 class="section-title" style="text-align:center;margin-bottom:40px">What Guests Are Saying</h2>
+
+      <div class="charter-review-grid" id="cReviewRow0">
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"The captain and crew are knowledgeable of the area with great conversation skills. They navigated the waters with a safety-first mindset and I appreciated that! I can't wait to book again next summer!"</p>
+          <div class="charter-review-author">Andy F.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"So nice to have a boat to yourself around Newport. Nick was great — super fun to have as your captain. He let my friend's son sit with him the entire time and answered all of his questions. Such a fun experience! Can't wait to do it again!"</p>
+          <div class="charter-review-author">Alexa C.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"Celebrated a 30th with Newport Boat Adventures and it was a perfect evening! So easy to book, and quick communication with any questions I had. I will definitely book again before the summer ends — absolutely recommend to anyone looking for a great time away from the busy streets of Newport."</p>
+          <div class="charter-review-author">Hannah C.</div>
+        </div>
+      </div>
+
+      <div class="charter-review-grid" id="cReviewRow1" style="display:none">
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"Me and my family went out on the waters with Captain Nick and had an AWESOME experience! Beautiful views — he took us to cool cliff diving spots and even a bridge jump! So fun. A must for a Newport visit!"</p>
+          <div class="charter-review-author">Rachel S.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"Great day on the boat with Nik! He let us decide what we wanted to do, and let us go tubing off the back of the boat! He was super fun and easy to talk to. We will book again next time in Newport."</p>
+          <div class="charter-review-author">Maura G.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"I had a great time on the water — the captain was incredible and very knowledgeable. I would definitely recommend booking, and I can't wait for my next trip."</p>
+          <div class="charter-review-author">Luke S.</div>
+        </div>
+      </div>
+
+      <div class="charter-review-grid" id="cReviewRow2" style="display:none">
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"My friends and I had a blast on our sunset cruise with Captain Nik! They were very communicative and made sure we had the best experience. I will definitely be booking again and would recommend to anyone!"</p>
+          <div class="charter-review-author">Jordyn D.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"Great adventure with Captain Nik! We had some smooth sailing on the ocean off the coast of Newport. He and his brother handled the business well — we wish them all the best with their new venture!"</p>
+          <div class="charter-review-author">Russ M.</div>
+        </div>
+        <div class="charter-review-card">
+          <div class="charter-review-stars">★★★★★</div>
+          <p class="charter-review-text">"Great experience. Highly recommend and will certainly do again. I brought 3 teenagers and Nik made sure they both learned a lot and had a blast."</p>
+          <div class="charter-review-author">Sean S.</div>
+        </div>
+      </div>
+
+      <div class="review-dots" style="margin-top:32px">
+        <button class="review-dot active" onclick="goCReviewRow(0)" id="cdot0"></button>
+        <button class="review-dot" onclick="goCReviewRow(1)" id="cdot1"></button>
+        <button class="review-dot" onclick="goCReviewRow(2)" id="cdot2"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Premium wave transition into CTA -->
+  <!-- Clean minimal divider: thin gold rule + small ornament -->
+  <div class="cta-divider">
+    <div class="cta-divider-inner">
+      <div class="cta-divider-line"></div>
+      <div class="cta-divider-ornament">✦</div>
+      <div class="cta-divider-line"></div>
+    </div>
+  </div>
+
+  <!-- CALL TO ACTION -->
+  <div class="charter-cta-section">
+    <h2 class="charter-cta-title">Your Best Day on the Water<br><em>Starts Here</em></h2>
+    <p class="charter-cta-sub">Book online anytime or call us directly — we'd love to help plan your day.</p>
+    <div class="charter-cta-btns">
+      <button class="btn-primary" onclick="navigate('contact')">Book Online Now</button>
+      <a class="charter-cta-call" href="tel:4018303839">Call (401) 830-3839</a>
+    </div>
+  </div>
+
+  <div id="footer-charters"></div>
+</div>
+
+<!-- ══════════════ EVENTS PAGE ══════════════ -->
+<div id="page-events" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Events.png')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">On-Water Events</div>
+      <h1 class="page-hero-title">Events &amp; Special <em>Experiences</em></h1>
+      <p class="page-hero-sub">Whatever you're celebrating, the water makes it better. Browse our event offerings or design your own.</p>
+      <button class="btn-primary" style="margin-top:8px" onclick="document.getElementById('custom-event-form').scrollIntoView({behavior:'smooth'})">Plan a Custom Event</button>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+
+  <!-- Intro text block -->
+  <div class="events-intro">
+    <div class="section-eyebrow" style="justify-content:center">Our Event Experiences</div>
+    <h2 class="events-intro-title">Every Occasion, On the Water</h2>
+    <p class="events-intro-sub">From intimate proposals to full celebrations — we specialize in making moments unforgettable.</p>
+  </div>
+
+  <!-- EVENT CARDS GRID -->
+  <div class="ev-grid">
+
+    <!-- Bachelorette -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#162d52">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Bachelorette%20-%20Events.png" alt="Bachelorette Party">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Girls Trip</div>
+        <h3 class="ev-card-title">Bachelorette Parties</h3>
+        <p class="ev-card-desc">The ultimate bachelorette experience — sun, music, dancing, and Newport Harbor. Private and fully customizable for the bride's perfect day.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Plan Your Bach Party</button>
+      </div>
+    </div>
+
+    <!-- Proposal -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#1a3550">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Proposals%20%26%20Engagements%20-%20Events.png" alt="Proposal" style="object-position: center 30%;">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Romance</div>
+        <h3 class="ev-card-title">Proposals &amp; Engagements</h3>
+        <p class="ev-card-desc">Surprise your partner with the most breathtaking proposal backdrop in Newport. We'll help you plan every detail for a perfect yes moment on the water.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Plan a Proposal</button>
+      </div>
+    </div>
+
+    <!-- Birthday -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#0f2240">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Birthdays%20and%20Milestones%20-%20Events.jpg" alt="Birthday">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Celebrations</div>
+        <h3 class="ev-card-title">Birthdays &amp; Milestones</h3>
+        <p class="ev-card-desc">Celebrate your special day in style. Whether it's a milestone birthday, graduation, or any occasion worth marking — we'll make it a memory.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Book Your Birthday</button>
+      </div>
+    </div>
+
+    <!-- Wine Tour -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#2a1f3d">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/wine%20tour%20-%20events.jpg" alt="Wine Tour">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Luxury Experience</div>
+        <h3 class="ev-card-title">Wine Tour on the Water</h3>
+        <p class="ev-card-desc">Curated wines, stunning harbor views, and a private boat all to yourselves. The most elegant way to spend an afternoon in Newport.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Plan a Wine Tour</button>
+      </div>
+    </div>
+
+    <!-- Corporate -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#14304e">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Corporate%20Outing%202%20-%20Events.jpg" alt="Corporate Outing">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Business</div>
+        <h3 class="ev-card-title">Corporate Outings</h3>
+        <p class="ev-card-desc">Team-building, client entertainment, or a company milestone — a private charter on the water leaves an impression no conference room ever could.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Book Corporate Event</button>
+      </div>
+    </div>
+
+    <!-- Anniversary -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#1a2e4a">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Anniversary%20-%20Events.png" alt="Anniversary" style="object-position: center 30%;">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Romance</div>
+        <h3 class="ev-card-title">Anniversary Cruise</h3>
+        <p class="ev-card-desc">Two hours just for two. Champagne, rose petals, and a front-row seat to one of New England's most breathtaking sunsets. Romance at its finest.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Book Anniversary</button>
+      </div>
+    </div>
+
+    <!-- Graduation -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#162535">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Graduation%20Cely%20-%20Events.jpg" alt="Graduation">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Milestones</div>
+        <h3 class="ev-card-title">Graduation Celebration</h3>
+        <p class="ev-card-desc">Cap, gown, and the open sea. Celebrate your graduate and their crew in style with a private Newport harbor cruise they'll never forget.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Book Graduation</button>
+      </div>
+    </div>
+
+    <!-- Professional Photography -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#0d1f3c">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Professional%20Photography%20-%20Events.jpg" alt="Photography">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Creative</div>
+        <h3 class="ev-card-title">Professional Photography</h3>
+        <p class="ev-card-desc">Newport's most stunning backdrop, yours to shoot. Couples, families, brands — the harbor provides a setting no studio can replicate. Add a photographer to any charter.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Inquire About Photos</button>
+      </div>
+    </div>
+
+    <!-- Folk & Jazz Fest / 4th of July -->
+    <div class="ev-card">
+      <div class="ev-card-img" style="background:#1a1a2e">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/4th%20of%20July%20-%20Events.png" alt="Newport Festivals">
+      </div>
+      <div class="ev-card-body">
+        <div class="ev-card-eyebrow">Newport Events</div>
+        <h3 class="ev-card-title">Folk &amp; Jazz Fest &middot; 4th of July</h3>
+        <p class="ev-card-desc">Experience Newport's world-famous festivals and fireworks from the water — the best seat in the house. Limited availability; book early to secure your spot.</p>
+        <button class="ev-card-btn" onclick="navigate('contact')">Check Availability</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CUSTOM EVENT FORM -->
+  <div class="custom-event-section" id="custom-event-form">
+    <div class="custom-event-inner">
+      <div class="section-eyebrow" style="justify-content:center">Design Your Own</div>
+      <h2 class="custom-event-title">Don't See What You Have in Mind?</h2>
+      <p class="custom-event-sub">Tell us about your vision and we'll build a completely bespoke experience around your group, date, and budget. Every detail, handled for you.</p>
+      <form class="custom-event-form" onsubmit="return false;">
+        <div class="cev-row">
+          <div class="cev-group"><label class="cev-label">First Name</label><input class="cev-input" type="text" placeholder="Jane"></div>
+          <div class="cev-group"><label class="cev-label">Last Name</label><input class="cev-input" type="text" placeholder="Smith"></div>
+        </div>
+        <div class="cev-row">
+          <div class="cev-group"><label class="cev-label">Email</label><input class="cev-input" type="email" placeholder="jane@example.com"></div>
+          <div class="cev-group"><label class="cev-label">Phone</label><input class="cev-input" type="tel" placeholder="(401) 555-0000"></div>
+        </div>
+        <div class="cev-row">
+          <div class="cev-group"><label class="cev-label">Type of Event</label>
+            <select class="cev-input">
+              <option value="">Select an event type...</option>
+              <option>Bachelorette / Bachelor</option>
+              <option>Proposal</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Graduation</option>
+              <option>Corporate Outing</option>
+              <option>Wine Tour</option>
+              <option>Photography Session</option>
+              <option>Festival / 4th of July</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="cev-group"><label class="cev-label">Approximate Date</label><input class="cev-input" type="text" placeholder="e.g. July 2025 or flexible"></div>
+        </div>
+        <div class="cev-row">
+          <div class="cev-group"><label class="cev-label">Number of Guests</label><input class="cev-input" type="number" placeholder="e.g. 8" min="1" max="12"></div>
+          <div class="cev-group"><label class="cev-label">Approximate Budget</label>
+            <select class="cev-input">
+              <option value="">Select a range...</option>
+              <option>Under $500</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $2,000</option>
+              <option>$2,000+</option>
+              <option>Flexible / Not sure</option>
+            </select>
+          </div>
+        </div>
+        <div class="cev-group cev-full"><label class="cev-label">Tell Us About Your Vision</label><textarea class="cev-input cev-textarea" placeholder="Share any details, special requests, or ideas you have in mind. The more you tell us, the better we can tailor the experience for you."></textarea></div>
+        <div style="text-align:center;margin-top:8px">
+          <button type="submit" class="btn-primary" style="padding:18px 48px">Send My Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Clean events/footer separator -->
+  <div class="events-footer-clean-sep"></div>
+
+  <div id="footer-events"></div>
+</div>
+<!-- ══════════════ ABOUT PAGE ══════════════ -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20About%20Us.JPG');background-position:center 40%;background-size:cover"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Our Story</div>
+      <h1 class="page-hero-title">About <em>Us</em></h1>
+      <p class="page-hero-sub">Local captains. A family business. Born on the water.</p>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+
+  <!-- SECTION 1: How We Started — photo + text -->
+  <div class="about-story-section">
+    <div class="about-story-inner">
+      <div class="about-story-img-wrap">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/IMG_2161.jpeg" alt="Captain Nik and his brother aboard One Day" class="about-story-img">
+      </div>
+      <div class="about-story-content">
+        <div class="section-eyebrow">How It Started</div>
+        <h2 class="section-title">At Home on<br><em>Narragansett Bay</em></h2>
+        <p class="about-body">Newport Boat Adventures grew out of a simple love of the water. Captain Nik and his brother spent their childhoods on Narragansett Bay — surfing, fishing, and taking anyone they could out on the family's old Boston Whaler. What started as a passion became a mission: share that authentic, unfiltered joy of the ocean with everyone who steps aboard.</p>
+        <p class="about-body">As a family-run business, every charter is personal. You're not booking a company — you're booking people who genuinely love what they do and love this part of the world. That energy is on the boat every single time.</p>
+        <p class="about-body">We operate seasonally from May through October out of Newport, RI, sailing throughout Narragansett Bay, Rhode Island Sound, and beyond.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: The Boat — dark navy background -->
+  <div class="about-vessel-section">
+    <div class="about-vessel-inner">
+      <div class="about-vessel-content">
+        <div class="section-eyebrow" style="color:var(--gold)">Meet the Vessel</div>
+        <h2 class="about-vessel-title">The <em>One Day</em></h2>
+        <p class="about-vessel-sub">Named after the phrase "one day you'll look back and smile" — the 33-foot Grady White is the heart of every charter we run.</p>
+        <div class="about-vessel-specs">
+          <div class="about-spec"><div class="about-spec-label">Vessel</div><div class="about-spec-value">33&rsquo; Grady White Center Console</div></div>
+          <div class="about-spec"><div class="about-spec-label">Engine</div><div class="about-spec-value">Twin 350 HP Yamaha Outboards</div></div>
+          <div class="about-spec"><div class="about-spec-label">Capacity</div><div class="about-spec-value">Up to 12 guests</div></div>
+          <div class="about-spec"><div class="about-spec-label">Home Port</div><div class="about-spec-value">Newport, Rhode Island</div></div>
+          <div class="about-spec"><div class="about-spec-label">Season</div><div class="about-spec-value">May – October</div></div>
+          <div class="about-spec"><div class="about-spec-label">Licensed</div><div class="about-spec-value">USCG Licensed Captain</div></div>
+        </div>
+        <p class="about-vessel-desc">One Day is meticulously maintained and outfitted for both comfort and performance. Every charter is private — we never combine groups — so whether you're celebrating a milestone, heading out to fish, or simply want to explore the coast, the entire boat is yours for the day.</p>
+      </div>
+      <div class="about-vessel-img-wrap" id="vessel-wrap" style="overflow:visible;">
+        <div class="about-vessel-img-wrap-sizer"></div>
+        <div id="vessel-track" style="position:absolute;top:0;left:0;width:calc(100% - 18px);height:420px;z-index:1;overflow:hidden;border-radius:4px;">
+          <div id="vessel-slider" style="display:flex;width:800%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1);">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%202%20-%20Home.png" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 1">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%207%20copy%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 2">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%202%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 3">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%203%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 4">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%204%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 5">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%205%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 6">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%206%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 7">
+            <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 8">
+          </div>
+          <button onclick="vesselSlide(-1)" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.9);font-size:28px;font-weight:300;cursor:pointer;z-index:5;line-height:1;padding:0;text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:-2px;" aria-label="Previous">&#8249;</button>
+          <button onclick="vesselSlide(1)" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.9);font-size:28px;font-weight:300;cursor:pointer;z-index:5;line-height:1;padding:0;text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:-2px;" aria-label="Next">&#8250;</button>
+          <div id="vessel-dots" style="position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:5;">
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:1;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(0)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(1)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(2)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(3)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(4)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(5)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(6)"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.9);opacity:.35;display:inline-block;transition:opacity .3s;cursor:pointer;" onclick="vesselGoTo(7)"></span>
+          </div>
+        </div>
+        <div class="about-vessel-badge">One Day &mdash; 33&rsquo; Grady White</div>
+        <script>
+        (function(){
+          var vi=0,vt=8;
+          var slider=document.getElementById('vessel-slider');
+          function vesselUpdate(i){
+            vi=(i+vt)%vt;
+            slider.style.transform='translateX(-'+(vi*12.5)+'%)';
+            document.querySelectorAll('#vessel-dots span').forEach(function(d,j){d.style.opacity=j===vi?'1':'.4';});
+          }
+          window.vesselSlide=function(dir){vesselUpdate(vi+dir);};
+          window.vesselGoTo=function(i){vesselUpdate(i);};
+        })();
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: Captain Nik — cream background, photo right -->
+  <div class="about-captain-section">
+    <div class="about-captain-inner">
+      <div class="about-captain-content">
+        <div class="section-eyebrow">The Captain</div>
+        <h2 class="section-title">Captain Nik &amp;<br><em>No Bad Days on the Water</em></h2>
+        <p class="about-body">Captain Nik is the soul of Newport Boat Adventures. Licensed, local, and genuinely obsessed with making every trip better than the last — he has an instinct for reading the water, finding the best spots, and keeping energy high whether you're fishing at sunrise or cruising to Jazz Fest at golden hour.</p>
+        <p class="about-body">Beyond the water, Nik is active in the Newport community and loves creating entertaining content that captures the spirit of life on the bay. From behind-the-scenes moments on the boat to local Newport culture — he's always on, always authentic, and always making people smile.</p>
+        <p class="about-body">Follow along for the latest from the water, behind-the-scenes charter moments, and plenty of Newport charm.</p>
+        <div class="about-captain-socials">
+          <a class="about-social-btn" href="https://www.instagram.com/newport_boat_adventures_ri" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Follow on Instagram</span>
+          </a>
+          <a class="about-social-btn about-social-btn-outline" href="https://www.tiktok.com/@newportboatadventures" target="_blank">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            <span>Follow on TikTok</span>
+          </a>
+        </div>
+      </div>
+      <div class="about-captain-img-wrap">
+        <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Captain%20Nik%202%20-%20About%20Us.jpg" alt="Captain Nik — Newport Boat Adventures" class="about-captain-img photo-shadow-navy">
+        <div class="about-captain-quote">
+          <em>"No Bad Days on the Water"</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-about"></div>
+</div>
+
+<!-- ══════════════ FAQ PAGE ══════════════ -->
+<div id="page-faq" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Menu.jpg')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Need Answers?</div>
+      <h1 class="page-hero-title">Frequently Asked <em>Questions</em></h1>
+      <p class="page-hero-sub">Everything you need to know before you set sail.</p>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+
+  <div class="faq-page">
+    <div class="faq-page-inner">
+
+      <div class="faq-category">
+        <div class="faq-cat-header"><div class="faq-cat-icon-text">01</div><div class="faq-cat-title">Booking &amp; Pricing</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>What is your cancellation policy?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We offer free cancellation up to 48 hours before your scheduled departure. Cancellations within 48 hours, or no-shows, are non-refundable. We strongly recommend travel insurance for groups traveling from out of town.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>How far in advance should I book?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We recommend booking at least 2–4 weeks in advance, especially during peak season (June–September). Weekend dates and holidays book quickly. Last-minute bookings are sometimes available — contact us directly to check.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Do you offer any discounts or repeat-guest pricing?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We love our returning guests! Reach out to us directly if you've sailed with us before and we'll always do our best to take care of you. We also offer referral perks — ask us for details.</div></div></div>
+      </div>
+
+      <div class="faq-category">
+        <div class="faq-cat-header"><div class="faq-cat-icon-text">02</div><div class="faq-cat-title">The Boat &amp; Capacity</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>How many people can come aboard One Day?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">The 33&rsquo; Grady White One Day has a USCG capacity of up to 12 passengers. For fishing charters, we limit guests to 6 for the best experience and safety.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Do you provide life jackets?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Yes — USCG-approved life jackets in all sizes (including children&rsquo;s) are provided on board and are required to be accessible at all times.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Is there a bathroom on board?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">One Day does not have an enclosed head (bathroom). For longer charters, we plan stops near facilities as needed. Please keep this in mind when booking, especially with young children.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Can we swim off the boat?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Absolutely — swimming is one of the best parts of a charter! We&rsquo;ll find a calm, beautiful spot to drop anchor so you can jump in. Let us know when booking if a swim stop is a priority and we&rsquo;ll plan around it.</div></div></div>
+      </div>
+
+      <div class="faq-category">
+        <div class="faq-cat-header"><div class="faq-cat-icon-text">03</div><div class="faq-cat-title">Food, Drinks &amp; Add-Ons</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Can I bring my own food and drinks?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Absolutely. You are welcome to bring your own food, non-alcoholic beverages, and alcohol for personal consumption. We have a cooler on board. We also offer catering packages through our local partners.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>What catering options do you offer?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We&rsquo;ve partnered with some of Newport&rsquo;s best: our own charcuterie boards, pizza from Imbriglia&rsquo;s, sandwiches from Newport Sandwich Company, and award-winning lobster rolls and clam chowder from Newport Chowder Company. Add any of these when booking.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Is alcohol permitted on board?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Yes, guests are welcome to bring and consume alcohol responsibly. The captain reserves the right to limit alcohol consumption if safety is a concern. Please drink responsibly and stay hydrated — the sun on the water is strong!</div></div></div>
+      </div>
+
+      <div class="faq-category">
+        <div class="faq-cat-header"><div class="faq-cat-icon-text">04</div><div class="faq-cat-title">Weather &amp; Safety</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>What if the weather is bad?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Your safety is our first priority. We monitor weather closely and will contact you if conditions warrant a reschedule. Weather-related cancellations initiated by us will receive a full refund or complimentary reschedule at no charge.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Are children allowed on board?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Children are welcome! Life jackets in all sizes including children&rsquo;s are provided. We recommend children wear sunscreen and be comfortable near water. Please let us know the ages of any children when booking.</div></div></div>
+      </div>
+
+      <div class="faq-category">
+        <div class="faq-cat-header"><div class="faq-cat-icon-text">05</div><div class="faq-cat-title">Logistics &amp; Departure</div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Where do we depart from?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">All charters depart from Newport, Rhode Island. Exact dock location details will be provided in your confirmation email. Parking is available nearby.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>What should I wear and bring?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We recommend layers (it&rsquo;s cooler on the water), non-slip shoes, sunscreen, sunglasses, and a hat. If you plan to swim, bring a towel and change of clothes. A light jacket is always a good idea even in summer.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Is there parking near the dock?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Yes, public parking is available near our departure point in Newport. We&rsquo;ll include specific parking recommendations in your booking confirmation. Newport can get busy in summer, so we recommend arriving 10–15 minutes early.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>When is your season?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">We operate seasonally from May through October, with peak season June through September. Contact us to inquire about specific off-season dates.</div></div></div>
+        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>Can you travel to Block Island or other destinations?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">Yes! Full-day and half-day charters offer flexibility to cruise to Block Island, the Sakonnet River, secluded coves, and beyond. Let us know your preferences when booking and the captain will work with you on an itinerary.</div></div></div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Still have questions? -->
+  <div class="faq-contact-cta" style="background:var(--navy);padding:56px 48px 28px;">
+    <div class="faq-contact-inner" style="position:relative;z-index:2">
+      <div style="width:36px;height:1.5px;background:var(--gold);margin:0 auto 20px;opacity:.8"></div>
+      <div class="faq-contact-ornament">✦</div>
+      <h3 class="faq-contact-title">Still Have Questions?</h3>
+      <p class="faq-contact-sub">We&rsquo;re always happy to help. Reach out directly and we&rsquo;ll get back to you quickly.</p>
+      <button class="btn-primary" onclick="navigate('contact')">Contact Us</button>
+    </div>
+  </div>
+  <div class="shop-footer-sep">
+    <div class="shop-footer-sep-ornament">
+      <div class="shop-footer-sep-line"></div>
+      <span class="shop-footer-sep-diamond">✦ ✦ ✦</span>
+      <div class="shop-footer-sep-line right"></div>
+    </div>
+  </div>
+  <div id="footer-faq"></div>
+</div>
+
+<!-- ══════════════ MENU PAGE ══════════════ -->
+<div id="page-menu" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Lobster%20Roll%20-%20Menu.jpg');background-size:cover;background-position:center 50%" id="menu-hero-bg"></div>
+    <script>
+    (function(){
+      var el=document.getElementById('menu-hero-bg');
+      var img=new Image();
+      img.onerror=function(){
+        el.style.backgroundImage="url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Lobster%20roll%20-%20Menu.jpg')";
+        var img2=new Image();
+        img2.onerror=function(){el.style.backgroundImage="url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%202%20-%20Menu.jpg')";};
+        img2.src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Lobster%20roll%20-%20Menu.jpg";
+      };
+      img.src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Lobster%20Roll%20-%20Menu.jpg";
+    })();
+    </script>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">On-Board Dining</div>
+      <h1 class="page-hero-title">The Boat <em>Menu</em></h1>
+      <p class="page-hero-sub">Restaurant-quality food delivered straight to your charter. Partnered with Newport's finest.</p>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+
+  <div class="menu-page">
+    <div class="menu-page-inner">
+
+      <!-- STARTERS -->
+      <div class="menu-section">
+        <div class="menu-section-header">
+          <div class="menu-section-eyebrow">To Start</div>
+          <h2 class="menu-section-title">Starters</h2>
+          <div class="menu-flourish">
+            <svg viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15,15 C19,7 28,4 34,10 C38,14 36,20 30,20 C25,20 23,14 27,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M34,15 C60,15 110,15 142,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><circle cx="150" cy="15" r="3" fill="none" stroke="#c9a84c" stroke-width="1.3"/><circle cx="150" cy="15" r="1" fill="#c9a84c"/><path d="M158,15 C190,15 240,15 266,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><path d="M285,15 C281,7 272,4 266,10 C262,14 264,20 270,20 C275,20 277,14 273,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item"><div class="menu-item-name">Dave's Chips and Salsa</div><div class="menu-item-price">$15</div></div>
+          <div class="menu-item"><div class="menu-item-name">Guacamole and Chips</div><div class="menu-item-price">$18</div></div>
+          <div class="menu-item"><div class="menu-item-name">Oysters by the Dozen</div><div class="menu-item-price">$45</div></div>
+          <div class="menu-item"><div class="menu-item-name">Shrimp by the Dozen</div><div class="menu-item-price">$40</div></div>
+          <div class="menu-item"><div class="menu-item-name">Homemade Charcuterie Board</div><div class="menu-item-price">$45</div></div>
+        </div>
+      </div>
+
+      <!-- MAINS -->
+      <div class="menu-section">
+        <div class="menu-section-header">
+          <div class="menu-section-eyebrow">The Main Event</div>
+          <h2 class="menu-section-title">Mains</h2>
+          <div class="menu-flourish">
+            <svg viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15,15 C19,7 28,4 34,10 C38,14 36,20 30,20 C25,20 23,14 27,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M34,15 C60,15 110,15 142,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><circle cx="150" cy="15" r="3" fill="none" stroke="#c9a84c" stroke-width="1.3"/><circle cx="150" cy="15" r="1" fill="#c9a84c"/><path d="M158,15 C190,15 240,15 266,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><path d="M285,15 C281,7 272,4 266,10 C262,14 264,20 270,20 C275,20 277,14 273,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">World Famous Lobster Rolls</div><div class="menu-item-desc">Grilled lobster served on a grilled brioche</div></div><div class="menu-item-price">$36</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Signature Fish Chowder &amp; Lobster Roll</div><div class="menu-item-desc">Shrimp, scallops &amp; cod served in a bowl with a 4oz Famous Lobster Roll</div></div><div class="menu-item-price">$48</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Rocco's Margherita Pizza</div><div class="menu-item-desc">Your choice of add-ons: meatball, spicy soppressata, Italian sausage, olives, peppers, onions, roasted garlic, anchovies, spinach — add-ons have additional charge</div></div><div class="menu-item-price">$28</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Aunt Josephina Pepperoni Pizza</div><div class="menu-item-desc">San Marzano tomatoes, fresh mozz, fresh basil, pepperoni, parmigiano reggiano, EVOO</div></div><div class="menu-item-price">$30</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Uncle John Brooklyn Style Pizza</div><div class="menu-item-desc">Blend of three Italian cheeses, homemade tomato sauce</div></div><div class="menu-item-price">$28</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Fish, Chicken, Shrimp, or Steak Tacos</div><div class="menu-item-desc">2 per order — flour tortillas, pan-seared meat, slaw, homemade aioli, salsa, cilantro, corn salsa, cheese</div></div><div class="menu-item-price">$22</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">8 Piece Sushi Roll</div><div class="menu-item-desc">Call to view our options</div></div><div class="menu-item-price">$38</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Classic BLT</div><div class="menu-item-desc">A timeless favorite — ¼ pound of bacon, lettuce, tomato &amp; mayo on Texas Toast</div></div><div class="menu-item-price">$18</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Chicken Caesar Wrap</div><div class="menu-item-desc">Roasted herb chicken breast chopped with romaine, Caesar dressing &amp; parmesan cheese</div></div><div class="menu-item-price">$19</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Hot Honey Chicken</div><div class="menu-item-desc">Fried chicken served with hot honey, bacon, pickles &amp; Pepper Jack cheese on an onion roll</div></div><div class="menu-item-price">$19</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Caprese Wrap</div><div class="menu-item-desc">Fresh tomatoes, fresh mozzarella, arugula, and basil aioli</div></div><div class="menu-item-price">$17</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Rocco's Italian Sub</div><div class="menu-item-desc">Cold sandwich — salami, ham, pepperoni, lettuce, tomato, red onions, provolone, homemade vinaigrette</div></div><div class="menu-item-price">$18</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Ryan's Roast Beef</div><div class="menu-item-desc">Mozzarella, roasted red peppers &amp; horseradish cream (cold sandwich)</div></div><div class="menu-item-price">$18</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Crispy Eggplant</div><div class="menu-item-desc">Fresh mozzarella, roasted peppers &amp; basil aioli on sub roll</div></div><div class="menu-item-price">$19</div></div>
+        </div>
+      </div>
+
+      <!-- GROUP DEALS -->
+      <div class="menu-section menu-section-group">
+        <div class="menu-section-header">
+          <div class="menu-section-eyebrow">Perfect for Groups</div>
+          <h2 class="menu-section-title">Group Deals</h2>
+          <div class="menu-flourish">
+            <svg viewBox="0 0 300 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15,15 C19,7 28,4 34,10 C38,14 36,20 30,20 C25,20 23,14 27,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M34,15 C60,15 110,15 142,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><circle cx="150" cy="15" r="3" fill="none" stroke="#c9a84c" stroke-width="1.3"/><circle cx="150" cy="15" r="1" fill="#c9a84c"/><path d="M158,15 C190,15 240,15 266,15" stroke="#c9a84c" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.5"/><path d="M285,15 C281,7 272,4 266,10 C262,14 264,20 270,20 C275,20 277,14 273,11" stroke="#c9a84c" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg>
+          </div>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">6 Lobster Rolls</div></div><div class="menu-item-price">$195</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">48 Roll Sushi Platter</div></div><div class="menu-item-price">$110</div></div>
+          <div class="menu-item menu-item-featured"><div class="menu-item-left"><div class="menu-item-name">Hibachi Dinner With Chef</div><div class="menu-item-desc">Contact us for pricing and availability</div></div><div class="menu-item-price"></div></div>
+        </div>
+      </div>
+
+      <!-- DESSERTS & DRINKS side by side -->
+      <div class="menu-two-col">
+        <div class="menu-section">
+          <div class="menu-section-header">
+            <div class="menu-section-eyebrow">Sweet Finish</div>
+            <h2 class="menu-section-title">Desserts</h2>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item"><div class="menu-item-name">Cannoli</div><div class="menu-item-price">$4 each</div></div>
+            <div class="menu-item"><div class="menu-item-name">Cup Cakes</div><div class="menu-item-price">$15</div></div>
+            <div class="menu-item"><div class="menu-item-name">Cake</div><div class="menu-item-price">$45</div></div>
+            <div class="menu-item"><div class="menu-item-name">Lynda's Homemade Chocolate Chip Cookies</div><div class="menu-item-price">$10 / dozen</div></div>
+          </div>
+        </div>
+        <div class="menu-section">
+          <div class="menu-section-header">
+            <div class="menu-section-eyebrow">To Sip</div>
+            <h2 class="menu-section-title">Drinks</h2>
+          </div>
+          <div class="menu-items">
+            <div class="menu-item"><div class="menu-item-name">Capt'n Nik's Famous Milk Shake</div><div class="menu-item-price">$12</div></div>
+            <div class="menu-item"><div class="menu-item-name">Soda &amp; Water</div><div class="menu-item-price">On Us</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partners note -->
+      <div class="menu-partners-note" style="padding:16px 0 0">
+        <p>What started as a dream has turned into something so special. We are so pleased and thankful to have support from such amazing partnerships.</p>
+        <div class="menu-partners-logos">
+          <a class="menu-partner-link" href="https://www.newportsandwichco.com/" target="_blank">Newport Sandwich Co.</a>
+          <a class="menu-partner-link" href="https://www.newportchowdercompany.com/" target="_blank">Newport Chowder Company</a>
+          <a class="menu-partner-link" href="https://www.marketonbroadwaynewport.com/" target="_blank">Market on Broadway</a>
+          <a class="menu-partner-link" href="https://crucafenewport.com/" target="_blank">CRU Newport</a>
+          <a class="menu-partner-link" href="https://sardellas.com/" target="_blank">Imbriglio's Pizzeria</a>
+        </div>
+      </div>
+
+      <div class="menu-tagline" style="padding:16px 0 8px"><em>No Bad Days on the Water</em></div>
+
+    </div>
+  </div>
+  <div id="footer-menu"></div>
+</div>
+
+<!-- ══════════════ SHOP PAGE ══════════════ -->
+<div id="page-shop" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%203%20-%20Shop.jpg');background-size:cover;background-position:center 35%"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Newport Boat Adventures</div>
+      <h1 class="page-hero-title">The <em>Shop</em></h1>
+      <p class="page-hero-sub">Wear the good days. Take Newport home with you.</p>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+
+  <!-- 3 SHOP ITEMS -->
+  <div class="shop-grid-new">
+
+    <!-- No Bad Days Sweatshirt -->
+    <div class="shop-card-new">
+      <div class="shop-card-img-new" style="height:340px;padding:0;position:relative;overflow:hidden;background:#e8eef2;">
+        <div id="s0-track" style="display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/No%20Bad%20Days%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/No%20Bad%20Days%202%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/No%20Bad%20Days%203%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/No%20Bad%20Days%204%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+        </div>
+        <button onclick="shopScrollBy('s0',-1)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8592;</button>
+        <button onclick="shopScrollBy('s0',1)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8594;</button>
+        <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none;" id="s0-dots">
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:1;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+        </div>
+      </div>
+      <div class="shop-card-body-new">
+        <div class="shop-card-color-dot" style="background:#a8c8d8"></div>
+        <div class="shop-card-title-new">No Bad Days Sweatshirt</div>
+        <div class="shop-card-color-label">Baby Blue</div>
+        <p class="shop-card-desc-new">Mid-weight fleece with our signature "No Bad Days on the Water" script. Soft, cozy, and perfect for cool mornings on the dock.</p>
+        <div class="shop-card-footer-new">
+          <div class="shop-price-new">$49.95</div>
+          <button class="shop-order-btn" onclick="navigate('contact')">Order Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classic Sweatshirt -->
+    <div class="shop-card-new">
+      <div class="shop-card-img-new" style="height:340px;padding:0;position:relative;overflow:hidden;background:#e8eef2;">
+        <div id="s1-track" style="display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sweatshirt%205%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sweatshirt%206%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sweatshirt%20copy%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sweatshirt%202%20copy%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+        </div>
+        <button onclick="shopScrollBy('s1',-1)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8592;</button>
+        <button onclick="shopScrollBy('s1',1)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8594;</button>
+        <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none;" id="s1-dots">
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:1;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+        </div>
+      </div>
+      <div class="shop-card-body-new">
+        <div class="shop-card-color-dot" style="background:#f0f0f0;border:1px solid #ccc"></div>
+        <div class="shop-card-title-new">Classic Sweatshirt</div>
+        <div class="shop-card-color-label">White</div>
+        <p class="shop-card-desc-new">Our classic crew sweatshirt with "Newport Boat Adventures" in navy and gold. Clean, timeless, and a staple for any day spent on or near the water.</p>
+        <div class="shop-card-footer-new">
+          <div class="shop-price-new">$44.95</div>
+          <button class="shop-order-btn" onclick="navigate('contact')">Order Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Classic T-Shirt -->
+    <div class="shop-card-new">
+      <div class="shop-card-img-new" style="height:340px;padding:0;position:relative;overflow:hidden;background:#e8eef2;">
+        <div id="s2-track" style="display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/T%20shirt%20copy%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+          <img src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/T%20shirt%202%20copy%20-%20Shop.jpg" style="width:100%;height:100%;object-fit:cover;flex-shrink:0;scroll-snap-align:start;" draggable="false">
+        </div>
+        <button onclick="shopScrollBy('s2',-1)" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8592;</button>
+        <button onclick="shopScrollBy('s2',1)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(201,168,76,1);width:32px;height:32px;cursor:pointer;font-size:22px;font-weight:400;display:flex;align-items:center;justify-content:center;text-shadow:0 1px 4px rgba(0,0,0,.4);">&#8594;</button>
+        <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none;" id="s2-dots">
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:1;display:inline-block;"></span>
+          <span style="width:6px;height:6px;border-radius:50%;background:#c9a84c;opacity:.35;display:inline-block;"></span>
+        </div>
+      </div>
+      <div class="shop-card-body-new">
+        <div class="shop-card-color-dot" style="background:#f0f0f0;border:1px solid #ccc"></div>
+        <div class="shop-card-title-new">Classic T-Shirt</div>
+        <div class="shop-card-color-label">White</div>
+        <p class="shop-card-desc-new">Premium 100% cotton tee with the Newport Boat Adventures logo in navy and gold. Lightweight, breathable, and built for a day in the sun.</p>
+        <div class="shop-card-footer-new">
+          <div class="shop-price-new">$29.95</div>
+          <button class="shop-order-btn" onclick="navigate('contact')">Order Now</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    var shopCounts = {s0:4, s1:4, s2:2};
+    var shopIdx2 = {s0:0, s1:0, s2:0};
+    function shopScrollBy(id, dir) {
+      var total = shopCounts[id];
+      var next = (shopIdx2[id] + dir + total) % total;
+      shopIdx2[id] = next;
+      var track = document.getElementById(id+'-track');
+      var w = track.clientWidth;
+      track.scrollTo({left: next * w, behavior:'smooth'});
+      setTimeout(function(){ updateShopDots(id); }, 350);
+    }
+    function updateShopDots(id) {
+      var track = document.getElementById(id+'-track');
+      var w = track.clientWidth;
+      var idx = Math.round(track.scrollLeft / w);
+      shopIdx2[id] = idx;
+      document.querySelectorAll('#'+id+'-dots span').forEach(function(d,j){
+        d.style.opacity = j === idx ? '1' : '.35';
+      });
+    }
+    ['s0','s1','s2'].forEach(function(id){
+      var track = document.getElementById(id+'-track');
+      if(track) track.addEventListener('scroll', function(){ updateShopDots(id); }, {passive:true});
+    });
+    </script>
+
+  </div><!-- end shop-grid-new -->
+
+  <!-- EMAIL SIGNUP / NOTIFY ME -->
+  <div class="shop-notify-section" style="position:relative;overflow:hidden;background:transparent;padding:100px 48px 80px;">
+    <div style="position:absolute;inset:0;background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Bottom%20-%20Shop.jpg');background-size:cover;background-position:center;"></div>
+    <div style="position:absolute;inset:0;background:rgba(13,31,60,.78);"></div>
+    <div class="shop-notify-inner" style="position:relative;z-index:2;">
+      <div class="section-eyebrow" style="justify-content:center;color:var(--gold)">Stay in the Loop</div>
+      <h2 class="shop-notify-title">New Items Dropping Soon</h2>
+      <p class="shop-notify-sub">We&rsquo;re always working on something new. Enter your email and we&rsquo;ll let you know the moment a new item hits the shop — before anyone else.</p>
+      <form class="shop-notify-form" onsubmit="handleShopSignup(event)">
+        <input class="shop-notify-input" type="email" id="shopEmailInput" placeholder="your@email.com" required>
+        <button type="submit" class="shop-notify-btn">Notify Me</button>
+      </form>
+      <p class="shop-notify-fine">No spam. Just new drops. Unsubscribe anytime.</p>
+      <p id="shopSignupMsg" style="display:none;font-family:var(--font-ui);font-size:13px;color:var(--gold);margin-top:12px;text-align:center">You&rsquo;re on the list! We&rsquo;ll be in touch.</p>
+    </div>
+  </div>
+  <div id="footer-shop"></div>
+</div>
+
+<!-- ══════════════ CONTACT PAGE ══════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Contact%20Us.jpg');background-position:center 70%"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Get in Touch</div>
+      <h1 class="page-hero-title">Contact <em>Us</em></h1>
+      <p class="page-hero-sub">We&rsquo;d love to hear from you. Let&rsquo;s plan your perfect day on the water.</p>
+    </div>
+    <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
+  </div>
+  <div class="contact-layout">
+    <div>
+      <h2 class="contact-info-title">Let&rsquo;s Set Sail Together</h2>
+      <p class="contact-info-sub">Have a question about a charter, want to plan a custom event, or just want to say hello? Reach out anytime — we respond quickly.</p>
+      <div class="contact-details" style="display:flex;flex-direction:column;gap:24px">
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2C7.24 2 5 4.24 5 7c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7a2 2 0 100-4 2 2 0 000 4z"/></svg></div><div><div class="contact-detail-label">Location</div><div class="contact-detail-value">Newport, Rhode Island</div></div></div>
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M2 3h16v12H2V3zm8 7l6-5H4l6 5zm0 1.5L4 6.5V13h12V6.5l-6 5z"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:newportboatadventuresri@gmail.com" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(13,31,60,.25);transition:border-color .2s" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='rgba(13,31,60,.25)'">newportboatadventuresri@gmail.com</a></div></div></div>
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M6.6 9.4c.9 1.8 2.2 3.2 4 4l1.3-1.3c.2-.2.4-.2.6-.1 1 .3 2 .5 3 .5.3 0 .5.2.5.5v3c0 .3-.2.5-.5.5C8.3 16.5 3.5 11.7 3.5 5.5 3.5 5.2 3.7 5 4 5h3c.3 0 .5.2.5.5 0 1 .2 2 .5 3 .1.2 0 .4-.1.6L6.6 9.4z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value">(401) 830-3839</div></div></div>
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm.5 8.5V6a.5.5 0 00-1 0v5a.5.5 0 00.15.35l3 3a.5.5 0 00.7-.7l-2.85-2.85z"/></svg></div><div><div class="contact-detail-label">Season</div><div class="contact-detail-value">May – October</div></div></div>
+        <!-- Follow Us — separated with a top border -->
+        <div style="padding-top:20px;border-top:1px solid rgba(201,168,76,.2);margin-top:4px">
+          <div class="contact-detail-label" style="margin-bottom:14px">Follow Us</div>
+          <div class="contact-follow-btns">
+            <a class="contact-follow-btn" href="https://www.google.com/search?sca_esv=4b9c4fb793c57767&q=Newport+Boat+Adventures+Reviews&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOQWliEGESB3U2N-EzPXg9uklIX4Bx8bLlmUR9kLBSU91nnGOSstYDQYlZyYjZE_oZPBxxZXLMmZ3pm8ey96yqI__LiwJEIsyVhFyVFyTnwPHMkntYQ%3D%3D&ved=2ahUKEwim5uOMibqTAxUwGlkFHZdwPfEQ0bkNegQIRhAF" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+              Google Reviews
+            </a>
+            <a class="contact-follow-btn" href="https://www.instagram.com/newport_boat_adventures_ri" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a class="contact-follow-btn" href="https://www.tiktok.com/@newportboatadventures" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+              TikTok
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+        <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="cf-first" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="cf-last" type="text" placeholder="Smith" required></div></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="cf-email" type="email" placeholder="jane@example.com" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="cf-phone" type="tel" placeholder="(401) 555-0000"></div>
+        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" id="cf-interest"><option value="">— Select a topic —</option><option>Sunset Sail</option><option>Morning Cruise</option><option>Half-Day Charter</option><option>Full-Day Charter</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelor</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>No Bad Days Sweatshirt</option><option>Classic Sweatshirt</option><option>Classic T-Shirt</option><option>General Inquiry</option></select></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" id="cf-message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p id="contactSuccessMsg" style="display:none;font-family:var(--font-ui);font-size:13px;color:var(--navy);margin-top:12px;padding:12px 16px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:2px">Your message has been sent! We&rsquo;ll be in touch shortly.</p>
+      </form>
+    </div>
+  </div>
+  <div id="footer-contact"></div>
+</div>
+
+<!-- ══════════════ BOOKING MODAL ══════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="booking-modal">
+    <div class="modal-header">
+      <div class="modal-header-left"><h2 id="modalTitle">Book Your Charter</h2><p id="modalSubtitle">Newport Boat Adventures · One Day</p></div>
+      <button class="modal-close" onclick="closeBooking()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-sidebar">
+        <div class="sidebar-charter-name" id="sidebarName">Sunset Sail</div>
+        <div class="sidebar-charter-type" id="sidebarType">Scenic Cruise</div>
+        <div class="sidebar-img"><svg viewBox="0 0 64 64" fill="none"><path d="M10 44 L32 12 L54 44" stroke="rgba(201,168,76,0.6)" stroke-width="2.5" stroke-linecap="round"/><path d="M6 48 L58 48" stroke="rgba(201,168,76,0.5)" stroke-width="2.5"/></svg></div>
+        <div class="sidebar-features" id="sidebarFeatures"></div>
+        <div class="booking-summary-box" id="bookingSummaryBox"><div class="bs-title">Your booking</div><div id="bookingSummaryContent"></div></div>
+      </div>
+      <div class="modal-main">
+        <div class="step-bar">
+          <div class="step-node active" id="sn1"><div class="step-circle" id="sc1">1</div><span>Date &amp; Time</span></div>
+          <div class="step-connector"></div>
+          <div class="step-node" id="sn2"><div class="step-circle" id="sc2">2</div><span>Guests</span></div>
+          <div class="step-connector"></div>
+          <div class="step-node" id="sn3"><div class="step-circle" id="sc3">3</div><span>Details</span></div>
+          <div class="step-connector"></div>
+          <div class="step-node" id="sn4"><div class="step-circle" id="sc4">4</div><span>Payment</span></div>
+        </div>
+        <div id="mStep1">
+          <div class="step-title">Choose a Date</div>
+          <div style="max-width:320px"><div class="cal-nav"><button class="cal-arrow" id="mPrev">‹</button><span class="cal-month-label" id="mCalMonth"></span><button class="cal-arrow" id="mNext">›</button></div><div class="cal-grid" id="mCalGrid"></div></div>
+          <div id="mTimeSlotsWrap" style="display:none;margin-top:24px"><div class="time-slots-label">Choose a Time</div><div class="time-slots-grid" id="mTimeSlots"></div></div>
+          <div class="modal-nav"><div></div><button class="modal-btn-next" id="mStep1Next" disabled onclick="mGoStep(2)">Continue →</button></div>
+        </div>
+        <div id="mStep2" style="display:none">
+          <div class="step-title">Guests &amp; Add-Ons</div>
+          <div class="guest-rows" id="guestRows"></div>
+          <div id="addonsSection" style="margin-top:24px"><div class="time-slots-label">Optional Add-Ons</div><div class="addons-list" id="addonsList"></div></div>
+          <div class="modal-nav"><button class="modal-btn-back" onclick="mGoStep(1)">← Back</button><button class="modal-btn-next" onclick="mGoStep(3)">Continue →</button></div>
+        </div>
+        <div id="mStep3" style="display:none">
+          <div class="step-title">Your Information</div>
+          <div class="modal-form-grid">
+            <div class="modal-form-group"><label class="modal-form-label">First Name</label><input class="modal-form-input" type="text" placeholder="Jane"></div>
+            <div class="modal-form-group"><label class="modal-form-label">Last Name</label><input class="modal-form-input" type="text" placeholder="Smith"></div>
+            <div class="modal-form-group full"><label class="modal-form-label">Email</label><input class="modal-form-input" type="email" placeholder="jane@example.com"></div>
+            <div class="modal-form-group"><label class="modal-form-label">Phone</label><input class="modal-form-input" type="tel" placeholder="(401) 555-0000"></div>
+            <div class="modal-form-group"><label class="modal-form-label">How did you hear about us?</label><select class="modal-form-select"><option>Select…</option><option>Google</option><option>Instagram</option><option>TikTok</option><option>Friend / family</option><option>Hotel</option><option>Return guest</option></select></div>
+            <div class="modal-form-group full"><label class="modal-form-label">Special requests</label><textarea class="modal-form-textarea" placeholder="Dietary needs, accessibility, special occasions…"></textarea></div>
+          </div>
+          <div class="policy-note"><strong>Cancellation policy:</strong> Free cancellation up to 48 hours before your charter. No refunds within 48 hours or for no-shows.</div>
+          <div class="modal-nav"><button class="modal-btn-back" onclick="mGoStep(2)">← Back</button><button class="modal-btn-next" onclick="mGoStep(4)">Continue to Payment →</button></div>
+        </div>
+        <div id="mStep4" style="display:none">
+          <div class="step-title">Payment</div>
+          <div class="card-brand-row"><div class="card-brand">VISA</div><div class="card-brand">MC</div><div class="card-brand">AMEX</div><div class="card-brand">DISC</div><span style="font-family:var(--font-ui);font-size:11px;color:var(--text-muted);margin-left:4px">All major cards accepted</span></div>
+          <div class="modal-form-grid">
+            <div class="modal-form-group full"><label class="modal-form-label">Card Number</label><input class="modal-form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19"></div>
+            <div class="modal-form-group"><label class="modal-form-label">Expiration</label><input class="modal-form-input" type="text" placeholder="MM / YY" maxlength="7"></div>
+            <div class="modal-form-group"><label class="modal-form-label">CVV</label><input class="modal-form-input" type="text" placeholder="•••" maxlength="4"></div>
+            <div class="modal-form-group full"><label class="modal-form-label">Name on Card</label><input class="modal-form-input" type="text" placeholder="Jane Smith"></div>
+          </div>
+          <div class="stripe-note"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" style="flex-shrink:0;margin-top:1px"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#1a3c5e" stroke-width="1.5"/></svg> Payments processed securely by <strong>Stripe</strong>. We never store your full card number.</div>
+          <div class="modal-nav"><button class="modal-btn-back" onclick="mGoStep(3)">← Back</button><button class="modal-btn-confirm" onclick="handlePayment()">Complete Booking →</button></div>
+        </div>
+        <div id="mConfirm" style="display:none">
+          <div class="confirm-screen">
+            <div class="confirm-check">✓</div>
+            <div class="confirm-title">Booking Confirmed!</div>
+            <p class="confirm-sub">A confirmation has been sent to your email.<br>We can&rsquo;t wait to have you aboard <em>One Day</em>.</p>
+            <div class="confirm-details-box" id="confirmDetailsBox"></div>
+            <button class="modal-btn-next" onclick="closeBooking()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// Data
+const CHARTERS = {
+  'sunset-sail':{name:'Sunset Sail',type:'Scenic Cruise',basePrice:350,features:['2 hours on the water','Up to 12 guests','Light refreshments','USCG Licensed Captain'],addons:['photography','champagne','catering']},
+  'half-day':{name:'Half-Day Charter',type:'Private Charter',basePrice:650,features:['4 hours','Up to 12 guests','Custom itinerary','Swim stop available'],addons:['photography','champagne','catering','snorkel']},
+  'full-day':{name:'Full-Day Charter',type:'Full-Day Charter',basePrice:1100,features:['8 hours','Up to 12 guests','Multiple destinations','Catering add-on'],addons:['photography','champagne','catering','snorkel']},
+  'fishing':{name:'Fishing Charter',type:'Sport Fishing',basePrice:700,features:['4–8 hours','Up to 6 guests','All gear provided','Keep your catch'],addons:['photography','catering']},
+  'celebration':{name:'Birthday / Celebration',type:'On-Water Event',basePrice:800,features:['3–4 hours','Up to 12 guests','Custom decorations','Catering options'],addons:['photography','champagne','catering','decorations']},
+  'bachelorette':{name:'Bachelorette / Bachelor',type:'Send-Off Sail',basePrice:900,features:['3–4 hours','Up to 12 guests','Champagne toast','Custom music'],addons:['photography','champagne','catering','decorations']},
+  'corporate':{name:'Corporate Event',type:'Corporate Charter',basePrice:1100,features:['Custom duration','Up to 12 guests','Catering available','AV equipment'],addons:['photography','catering','champagne']},
+  'anniversary':{name:'Anniversary Cruise',type:'Special Occasion',basePrice:400,features:['2 hours','Private & intimate','Champagne included','Rose petals'],addons:['photography','catering']},
+  'graduation':{name:'Graduation Celebration',type:'On-Water Event',basePrice:750,features:['3 hours','Up to 12 guests','Celebration setup','Photo opportunities'],addons:['photography','champagne','catering','decorations']},
+};
+const ADDONS_DEF = {
+  photography:{label:'Professional Photography',price:150,perPerson:false},
+  champagne:{label:'Champagne / Prosecco Package',price:85,perPerson:false},
+  catering:{label:'Full Catering Package',price:200,perPerson:false},
+  snorkel:{label:'Snorkel Gear (per person)',price:20,perPerson:true},
+  decorations:{label:'Custom Decorations & Setup',price:120,perPerson:false},
+};
+const GUEST_TYPES = [
+  {key:'adult',label:'Adult',priceLabel:'Included in flat rate'},
+  {key:'child',label:'Child (5–12)',priceLabel:'Included in flat rate'},
+  {key:'infant',label:'Infant (under 5)',priceLabel:'Free'},
+];
+const TIMES = [{t:'7:00 AM',avail:8},{t:'9:00 AM',avail:5},{t:'11:00 AM',avail:3},{t:'1:00 PM',avail:6},{t:'3:30 PM',avail:4},{t:'6:00 PM',avail:7}];
+const AVAIL_DAYS = [2,3,5,6,7,9,10,12,13,14,16,17,19,20,21,23,24,26,27,28,30];
+
+let mCurrentStep=1,mCharterId=null,mCharter=null;
+let mCalYear,mCalMonth,mSelDate=null,mSelTime=null;
+let mGuests={adult:1,child:0,infant:0},mAddons={};
+
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-link[data-page]').forEach(l=>l.classList.remove('active'));
+  const el=document.getElementById('page-'+page);
+  if(el) el.classList.add('active');
+  const al=document.querySelector('[data-page="'+page+'"]');
+  if(al) al.classList.add('active');
+  window.scrollTo(0,0);
+}
+function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMobileMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+
+function openBooking(charterId){
+  mCharterId=charterId; mCharter=CHARTERS[charterId];
+  if(!mCharter) return;
+  mCurrentStep=1; mSelDate=null; mSelTime=null;
+  mGuests={adult:1,child:0,infant:0}; mAddons={};
+  if(mCharter.addons) mCharter.addons.forEach(a=>mAddons[a]=false);
+  document.getElementById('sidebarName').textContent=mCharter.name;
+  document.getElementById('sidebarType').textContent=mCharter.type;
+  document.getElementById('sidebarFeatures').innerHTML=mCharter.features.map(f=>`<div class="sidebar-feature">${f}</div>`).join('');
+  document.getElementById('bookingSummaryBox').classList.remove('visible');
+  document.getElementById('modalTitle').textContent='Book: '+mCharter.name;
+  buildGuestRows(); buildAddonsList();
+  mGoStep(1); initCal();
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeBooking(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function handleOverlayClick(e){if(e.target===document.getElementById('modalOverlay'))closeBooking();}
+
+function mGoStep(n){
+  for(let i=1;i<=4;i++){
+    const s=document.getElementById('mStep'+i); if(s) s.style.display='none';
+    const sn=document.getElementById('sn'+i),sc=document.getElementById('sc'+i);
+    sn.classList.remove('active','done');
+    if(i<n){sn.classList.add('done');sc.textContent='✓';}
+    else if(i===n){sn.classList.add('active');sc.textContent=i;}
+    else{sc.textContent=i;}
+  }
+  document.getElementById('mConfirm').style.display='none';
+  const t=document.getElementById('mStep'+n); if(t) t.style.display='block';
+  mCurrentStep=n; mUpdateSummary();
+}
+function initCal(){
+  const now=new Date(); mCalYear=now.getFullYear(); mCalMonth=now.getMonth(); renderCal();
+  document.getElementById('mPrev').onclick=()=>{mCalMonth--; if(mCalMonth<0){mCalMonth=11;mCalYear--;} renderCal();};
+  document.getElementById('mNext').onclick=()=>{mCalMonth++; if(mCalMonth>11){mCalMonth=0;mCalYear++;} renderCal();};
+}
+function renderCal(){
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('mCalMonth').textContent=months[mCalMonth]+' '+mCalYear;
+  const grid=document.getElementById('mCalGrid'); grid.innerHTML='';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d=>{const el=document.createElement('div');el.className='cal-day-label';el.textContent=d;grid.appendChild(el);});
+  const firstDay=new Date(mCalYear,mCalMonth,1).getDay();
+  const totalDays=new Date(mCalYear,mCalMonth+1,0).getDate();
+  const today=new Date();
+  for(let i=0;i<firstDay;i++){const el=document.createElement('div');el.className='cal-day empty';grid.appendChild(el);}
+  for(let d=1;d<=totalDays;d++){
+    const el=document.createElement('div');
+    const isPast=new Date(mCalYear,mCalMonth,d)<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    let cls='cal-day';
+    if(isPast) cls+=' past'; else if(AVAIL_DAYS.includes(d)) cls+=' has-avail';
+    if(mSelDate&&d===mSelDate.day&&mCalMonth===mSelDate.month&&mCalYear===mSelDate.year) cls+=' selected';
+    el.className=cls; el.textContent=d;
+    if(!isPast) el.onclick=()=>selectDate(d);
+    grid.appendChild(el);
+  }
+}
+function selectDate(d){
+  mSelDate={day:d,month:mCalMonth,year:mCalYear}; mSelTime=null;
+  renderCal(); renderTimeSlots();
+  document.getElementById('mTimeSlotsWrap').style.display='block';
+  document.getElementById('mStep1Next').disabled=true;
+}
+function renderTimeSlots(){
+  const wrap=document.getElementById('mTimeSlots'); wrap.innerHTML='';
+  TIMES.forEach(t=>{
+    const el=document.createElement('div');
+    el.className='time-slot-btn'+(mSelTime===t.t?' selected':'');
+    el.innerHTML=`<div class="slot-time-text">${t.t}</div><div class="slot-avail">${t.avail} spots</div>`;
+    el.onclick=()=>{mSelTime=t.t; renderTimeSlots(); document.getElementById('mStep1Next').disabled=false; mUpdateSummary();};
+    wrap.appendChild(el);
+  });
+}
+function buildGuestRows(){
+  const c=document.getElementById('guestRows'); c.innerHTML='';
+  GUEST_TYPES.forEach(gt=>{
+    const row=document.createElement('div'); row.className='guest-row';
+    row.innerHTML=`<div><div class="guest-name">${gt.label}</div><div class="guest-price-label">${gt.priceLabel}</div></div><div class="guest-counter"><button class="counter-btn" onclick="changeGuest('${gt.key}',-1)">−</button><span class="counter-val" id="gc-${gt.key}">${mGuests[gt.key]}</span><button class="counter-btn" onclick="changeGuest('${gt.key}',1)">+</button></div>`;
+    c.appendChild(row);
+  });
+}
+function changeGuest(type,delta){
+  mGuests[type]=Math.max(type==='adult'?1:0,Math.min(12,mGuests[type]+delta));
+  const el=document.getElementById('gc-'+type); if(el) el.textContent=mGuests[type];
+  mUpdateSummary();
+}
+function buildAddonsList(){
+  const c=document.getElementById('addonsList'); c.innerHTML='';
+  if(!mCharter||!mCharter.addons||mCharter.addons.length===0){c.parentElement.style.display='none';return;}
+  c.parentElement.style.display='block';
+  mCharter.addons.forEach(key=>{
+    const def=ADDONS_DEF[key]; const row=document.createElement('div');
+    row.className='addon-row'; row.id='addon-row-'+key;
+    row.innerHTML=`<div class="addon-check" id="addon-check-${key}"></div><span class="addon-name-text">${def.label}</span><span class="addon-price-tag">+$${def.perPerson?def.price+'/person':def.price}</span>`;
+    row.onclick=()=>toggleAddon(key); c.appendChild(row);
+  });
+}
+function toggleAddon(key){
+  mAddons[key]=!mAddons[key];
+  document.getElementById('addon-row-'+key).classList.toggle('selected',mAddons[key]);
+  document.getElementById('addon-check-'+key).textContent=mAddons[key]?'✓':'';
+  mUpdateSummary();
+}
+function calcTotal(){
+  if(!mCharter) return 0;
+  let total=mCharter.basePrice;
+  const tp=mGuests.adult+mGuests.child;
+  if(mCharter.addons) mCharter.addons.forEach(k=>{if(mAddons[k]){const d=ADDONS_DEF[k];total+=d.perPerson?d.price*tp:d.price;}});
+  return total;
+}
+function mUpdateSummary(){
+  if(!mCharter) return;
+  const box=document.getElementById('bookingSummaryBox'),content=document.getElementById('bookingSummaryContent');
+  if(!mSelDate&&mCurrentStep<2){box.classList.remove('visible');return;}
+  box.classList.add('visible');
+  const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let html='';
+  if(mSelDate) html+=`<div class="bs-row"><span>Date</span><span>${months[mSelDate.month]} ${mSelDate.day}</span></div>`;
+  if(mSelTime) html+=`<div class="bs-row"><span>Time</span><span>${mSelTime}</span></div>`;
+  const tp=mGuests.adult+mGuests.child+mGuests.infant;
+  if(tp>0) html+=`<div class="bs-row"><span>Guests</span><span>${tp}</span></div>`;
+  html+=`<div class="bs-row bs-total"><span>Total</span><span>$${calcTotal().toLocaleString()}</span></div>`;
+  content.innerHTML=html;
+}
+function handlePayment(){showConfirmation();}
+function showConfirmation(){
+  for(let i=1;i<=4;i++){
+    const s=document.getElementById('mStep'+i); if(s) s.style.display='none';
+    const sn=document.getElementById('sn'+i),sc=document.getElementById('sc'+i);
+    sn.classList.remove('active'); sn.classList.add('done'); sc.textContent='✓';
+  }
+  document.getElementById('mConfirm').style.display='block';
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const box=document.getElementById('confirmDetailsBox');
+  let html=`<div class="confirm-row"><span>Charter</span><span>${mCharter.name}</span></div>`;
+  if(mSelDate) html+=`<div class="confirm-row"><span>Date</span><span>${months[mSelDate.month]} ${mSelDate.day}, ${mSelDate.year}</span></div>`;
+  if(mSelTime) html+=`<div class="confirm-row"><span>Time</span><span>${mSelTime}</span></div>`;
+  const tp=mGuests.adult+mGuests.child+mGuests.infant;
+  html+=`<div class="confirm-row"><span>Guests</span><span>${tp} ${tp===1?'person':'people'}</span></div>`;
+  html+=`<div class="confirm-row total-row"><span>Total</span><span>$${calcTotal().toLocaleString()}</span></div>`;
+  html+=`<div class="confirm-row"><span>Booking Ref</span><span>#NBA-${Math.floor(Math.random()*90000+10000)}</span></div>`;
+  box.innerHTML=html;
+}
+function toggleFAQ(btn){
+  const item=btn.parentElement,wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+function handleContactSubmit(e){
+  e.preventDefault();
+  const first=document.getElementById('cf-first').value.trim();
+  const last=document.getElementById('cf-last').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const phone=document.getElementById('cf-phone').value.trim();
+  const interest=document.getElementById('cf-interest').value;
+  const message=document.getElementById('cf-message').value.trim();
+  const subject=encodeURIComponent('New Inquiry: '+interest+' — '+first+' '+last);
+  const body=encodeURIComponent(
+    'Name: '+first+' '+last+'\n'+
+    'Email: '+email+'\n'+
+    'Phone: '+(phone||'Not provided')+'\n'+
+    'Interested In: '+interest+'\n\n'+
+    'Message:\n'+message
+  );
+  window.location.href='mailto:newportboatadventuresri@gmail.com?subject='+subject+'&body='+body;
+  setTimeout(()=>{
+    document.getElementById('contactSuccessMsg').style.display='block';
+    document.getElementById('contactForm').reset();
+  },500);
+}
+
+function handleShopSignup(e){
+  e.preventDefault();
+  const email=document.getElementById('shopEmailInput').value.trim();
+  if(email){
+    window.location.href='mailto:newportboatadventuresri@gmail.com?subject='+encodeURIComponent('New Shop Notification Signup')+'&body='+encodeURIComponent('New signup for shop notifications:\n\nEmail: '+email);
+    document.getElementById('shopSignupMsg').style.display='block';
+    e.target.reset();
+  }
+}
+
+function goCReviewRow(n){
+  [0,1,2].forEach(i=>{
+    const r=document.getElementById('cReviewRow'+i); if(r) r.style.display=i===n?'grid':'none';
+    const d=document.getElementById('cdot'+i); if(d) d.classList.toggle('active',i===n);
+  });
+  cCurrentRow=n;
+}
+let cCurrentRow=0,cReviewTimer=null;
+function startCReviewTimer(){
+  if(cReviewTimer) clearInterval(cReviewTimer);
+  cReviewTimer=setInterval(()=>goCReviewRow((cCurrentRow+1)%3),8000);
+}
+
+// Review carousel
+let currentRow=0,reviewTimer=null;
+function goReviewRow(n){
+  [0,1,2].forEach(i=>{
+    const r=document.getElementById('reviewRow'+i); if(r) r.style.display=i===n?'grid':'none';
+    const d=document.getElementById('dot'+i); if(d) d.classList.toggle('active',i===n);
+  });
+  currentRow=n;
+}
+function startReviewTimer(){
+  if(reviewTimer) clearInterval(reviewTimer);
+  reviewTimer=setInterval(()=>goReviewRow((currentRow+1)%3),8000);
+}
+// Pause on hover
+document.addEventListener('DOMContentLoaded',()=>{
+  // Inject shared footer into every page
+  const tpl = document.getElementById('footer-tpl');
+  const ids = ['footer-home','footer-charters','footer-events','footer-about','footer-faq','footer-menu','footer-shop','footer-contact'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && tpl) el.appendChild(tpl.content.cloneNode(true));
+  });
+
+  // Start home page review carousel
+  const r0=document.getElementById('reviewRow0'); if(r0) r0.style.display='grid';
+  startReviewTimer();
+  document.querySelectorAll('.review-row').forEach(row=>{
+    row.addEventListener('mouseenter',()=>clearInterval(reviewTimer));
+    row.addEventListener('mouseleave',()=>startReviewTimer());
+  });
+
+  // Start charter page review carousel
+  startCReviewTimer();
+  document.querySelectorAll('#page-charters .charter-review-grid').forEach(row=>{
+    row.addEventListener('mouseenter',()=>clearInterval(cReviewTimer));
+    row.addEventListener('mouseleave',()=>startCReviewTimer());
+  });
+  navigate('home');
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
+</script>
+</body>
+</html>
