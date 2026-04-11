@@ -314,10 +314,12 @@ body{font-family:var(--font-body);font-size:18px;color:var(--navy);background:va
 .charter-features{display:flex;gap:20px;flex-wrap:wrap;margin:20px 0}
 .charter-feature{font-family:var(--font-ui);font-size:11px;font-weight:500;color:var(--text-mid);display:flex;align-items:center;gap:6px}
 .charter-feature::before{content:'—';color:var(--gold)}
-.charter-card-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(201,168,76,.15)}
+.charter-card-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(201,168,76,.15);flex-wrap:wrap}
 .charter-price{font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--navy);line-height:1}
 .charter-price .starting-at{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--text-muted);display:block;margin-bottom:3px;text-transform:uppercase}
 .charter-price sub{font-size:15px;font-weight:400;color:var(--text-muted);font-family:var(--font-ui);vertical-align:baseline}
+.fishing-price-pair{font-size:22px;font-weight:600;font-family:var(--font-display);color:var(--navy);display:inline-flex;flex-wrap:wrap;gap:4px;align-items:baseline}
+.fishing-label{font-size:13px;font-weight:400;font-family:var(--font-ui);color:var(--text-muted)}
 .charter-price-block{display:flex;flex-direction:column;gap:5px}
 .charter-price-sub{font-family:var(--font-ui);font-size:11px;color:var(--text-muted);letter-spacing:.02em;line-height:1.4}
 .charter-price-couples{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--gold)}
@@ -746,10 +748,12 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .vessel-inner,.story-inner{gap:48px}
   .about-story-inner,.about-vessel-inner,.about-captain-inner{gap:48px}
   .charter-card{grid-template-columns:1fr}
+  .charter-card-img{min-height:260px}
   .contact-layout{gap:48px}
   .experience-grid{grid-template-columns:repeat(2,1fr)}
   .ev-grid{grid-template-columns:repeat(2,1fr)}
   .review-row{grid-template-columns:repeat(2,1fr)}
+  .charter-review-grid{grid-template-columns:repeat(2,1fr)}
 }
 
 /* MD — hide nav links, show hamburger */
@@ -776,6 +780,11 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .vessel-img{height:320px}
   .story-img-frame img{height:380px}
   .shop-grid-new{grid-template-columns:1fr 1fr}
+  /* Charter card: stack footer vertically on tablet */
+  .charter-card-footer{flex-direction:column;align-items:flex-start;gap:20px}
+  .charter-book-btn{align-self:flex-start;width:auto}
+  .charter-card-body{padding:28px 24px}
+  .charter-price{font-size:28px}
 }
 
 /* SM — tablet / large phone */
@@ -804,11 +813,26 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .page-hero{height:300px}
   .page-hero-title{font-size:clamp(28px,7vw,44px)}
   .section-title{font-size:clamp(26px,6vw,38px)}
+  /* Charter cards */
+  .charter-card-img{min-height:220px}
   .charter-card-body{padding:24px 20px}
+  .charter-card-footer{flex-direction:column;align-items:flex-start;gap:16px}
+  .charter-book-btn{width:100%;text-align:center}
+  .charter-price{font-size:26px}
+  .charter-features{gap:12px}
+  /* Experience cards on home */
+  .exp-card-meta{flex-direction:column;align-items:flex-start;gap:14px}
+  .exp-book-btn{width:100%;text-align:center;display:block !important}
+  /* Reviews */
+  .charter-review-grid{grid-template-columns:1fr}
   .vessel-inner{grid-template-columns:1fr}
   .vessel-specs{grid-template-columns:1fr 1fr}
   .booking-modal{border-radius:0;max-height:100vh;height:100vh}
   footer{padding:48px clamp(16px,5vw,32px) 24px}
+  /* Food grid */
+  .food-grid{grid-template-columns:1fr 1fr}
+  /* FAQ */
+  .faq-question{font-size:16px}
 }
 
 /* XS — mobile phone */
@@ -827,21 +851,43 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .vessel-section,.story-section,.testimonials-section,
   .charter-cta-section,.about-story-section,.about-vessel-section,.about-captain-section{padding:52px 16px}
   .charters-grid,.events-grid,.ev-grid,.shop-grid-new{padding:32px 16px}
+  /* Charter cards — full mobile */
+  .charter-card-img{min-height:200px}
   .charter-card-body{padding:20px 16px}
+  .charter-card-title{font-size:22px}
+  .charter-card-desc{font-size:16px}
+  .charter-card-footer{flex-direction:column;align-items:stretch;gap:16px}
+  .charter-book-btn{width:100%;text-align:center;padding:14px 20px}
+  .charter-price{font-size:24px}
+  .charter-features{flex-direction:column;gap:8px}
+  /* Experience cards */
   .exp-card-body{padding:20px 16px}
+  .exp-card-meta{flex-direction:column;align-items:flex-start;gap:14px}
+  .exp-book-btn{width:100%;text-align:center;display:block !important}
+  .exp-price{font-size:26px}
+  /* Vessel specs */
   .vessel-specs{grid-template-columns:1fr}
+  /* Testimonials */
   .testimonials-section{padding:52px 16px}
   .review-row{grid-template-columns:1fr}
   .testimonial-card{padding:24px 20px}
+  /* Events */
   .occasions-banner{height:320px}
   .occasions-title{font-size:clamp(24px,7vw,34px)}
+  /* Footer */
   .footer-col-title,.footer-col-links{font-size:13px}
   footer{padding:40px 16px 24px}
-  .shop-card-img-new{height:260px}
+  /* Contact */
   .contact-layout{padding:40px 16px}
   .faq-contact-cta{padding:52px 16px 28px}
+  /* About */
   .about-story-img,.about-captain-img{height:280px}
   .about-vessel-img,.about-vessel-img-wrap-sizer{height:240px}
+  /* Food grid goes single col on XS */
+  .food-grid{grid-template-columns:1fr}
+  /* FAQ */
+  .faq-question{font-size:15px}
+  .faq-answer-inner{font-size:16px}
 }
 
 /* ── FAQ CONTACT CTA ── */
@@ -880,7 +926,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
     </div>
     <button class="nav-link" data-page="faq" onclick="navigate('faq')">FAQ</button>
     <button class="nav-link" data-page="contact" onclick="navigate('contact')">Contact</button>
-    <button class="nav-book-btn" onclick="navigate('contact')">Book Now</button>
+    <a href="https://fareharbor.com/embeds/book/newportboatadventuresri/?full-items=yes&flow=1424328" class="nav-book-btn" style="text-decoration:none;display:inline-flex;align-items:center;">Book Now</a>
   </div>
   <button class="nav-hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
 </nav>
@@ -894,7 +940,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   <button class="mobile-sub" onclick="navigate('menu');closeMobileMenu()">Menu</button>
   <button class="mobile-nav-link" onclick="navigate('faq');closeMobileMenu()">FAQ</button>
   <button class="mobile-nav-link" onclick="navigate('contact');closeMobileMenu()">Contact</button>
-  <button class="nav-book-btn" style="align-self:flex-start" onclick="openBooking('sunset-sail');closeMobileMenu()">Book Now</button>
+  <a href="https://fareharbor.com/embeds/book/newportboatadventuresri/?full-items=yes&flow=1424328" class="nav-book-btn" style="align-self:flex-start;text-decoration:none;display:inline-flex;align-items:center;">Book Now</a>
 </div>
 
 <!-- shared footer snippet stored as template -->
@@ -913,6 +959,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
             <button class="footer-link" onclick="navigate('charters')">Charters</button>
             <button class="footer-link" onclick="navigate('events')">Events</button>
             <button class="footer-link" onclick="navigate('about')">Our Story</button>
+            <button class="footer-link" onclick="navigate('menu')">Menu</button>
             <button class="footer-link" onclick="navigate('faq')">FAQ</button>
             <button class="footer-link" onclick="navigate('contact')">Contact Us</button>
           </div>
@@ -920,11 +967,12 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <div>
           <div class="footer-col-title">Experiences</div>
           <div class="footer-links">
-            <button class="footer-link" onclick="openBooking('sunset-sail')">Sunset Sail</button>
-            <button class="footer-link" onclick="openBooking('half-day')">Half-Day Charter</button>
-            <button class="footer-link" onclick="openBooking('full-day')">Full-Day Charter</button>
-            <button class="footer-link" onclick="openBooking('fishing')">Fishing Trip</button>
-            <button class="footer-link" onclick="openBooking('celebration')">Celebrations</button>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719583/?full-items=yes&flow=no">Block Island Day Trip</a>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719300/?full-items=yes&flow=no">Newport Full-Day</a>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621972/?full-items=yes&flow=1423279">Half-Day Adventure</a>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621979/?full-items=yes&flow=1423279">Sunset Cruise</a>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719313/?full-items=yes&flow=no">Morning Cruise</a>
+            <a class="footer-link" href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719314/?full-items=yes&flow=no">Fishing Charter</a>
           </div>
         </div>
         <div>
@@ -999,8 +1047,8 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           <div class="exp-card-desc">Eight hours of complete freedom — multiple destinations, swim stops, and a laid-back day of fun on the water.</div>
           <div class="exp-card-meta" style="align-items:flex-start">
             <div>
-              <div class="exp-price"><span class="exp-starting-at">1–12 passengers</span>$1,250</div>
-              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Max 12 guests total</span></div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$1,250</div>
+              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Maximum 12 guests</span></div>
             </div>
             <a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719300/?full-items=yes&flow=no" class="exp-book-btn" style="flex-shrink:0;text-decoration:none;display:inline-block;">Book Now</a>
           </div>
@@ -1015,8 +1063,8 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           <div class="exp-card-desc">Four hours with the whole boat to yourselves, including swim stops, tubing, rock jumping, and exploring nearby coves.</div>
           <div class="exp-card-meta" style="align-items:flex-start">
             <div>
-              <div class="exp-price"><span class="exp-starting-at">1–12 passengers</span>$699</div>
-              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Max 12 guests total</span></div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$699</div>
+              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Maximum 12 guests</span></div>
             </div>
             <a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621972/?full-items=yes&flow=1423279" class="exp-book-btn" style="flex-shrink:0;text-decoration:none;display:inline-block;">Book Now</a>
           </div>
@@ -1032,8 +1080,8 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           <div class="exp-card-desc">End your day with a leisurely cruise around the harbor and take in Newport's breathtaking sunset over the water.</div>
           <div class="exp-card-meta" style="align-items:flex-start">
             <div>
-              <div class="exp-price"><span class="exp-starting-at">1–12 passengers</span>$449</div>
-              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Max 12 guests total</span></div>
+              <div class="exp-price"><span class="exp-starting-at">1–6 passengers</span>$449</div>
+              <div class="exp-price-sub">+$100 per additional guest</div><div class="exp-price-sub"><span class="exp-price-max">Maximum 12 guests</span></div>
               <div class="exp-price-couples">Couples special: $349</div>
             </div>
             <a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621979/?full-items=yes&flow=1423279" class="exp-book-btn" style="flex-shrink:0;text-decoration:none;display:inline-block;">Book Now</a>
@@ -1140,7 +1188,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
 <!-- ══════════════ CHARTERS PAGE ══════════════ -->
 <div id="page-charters" class="page">
   <div class="page-hero">
-    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Charters.JPG')"></div>
+    <div class="page-hero-bg" style="background-image:url('https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Main%20-%20Charters.JPG');background-position:center 60%"></div>
     <div class="page-hero-overlay"></div>
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Aboard One Day</div>
@@ -1152,26 +1200,16 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
     </div>
   </div>
 
-  <!-- CHARTER CARDS: Full-Day, Half-Day, Sunset Cruise, Morning Cruise, Fishing Charter -->
+  <!-- CHARTER CARDS -->
   <div class="charters-grid">
 
-    <!-- 0. Block Island Day Trip -->
+    <!-- 1. Sunset Cruise -->
     <div class="charter-card">
-      <div class="charter-card-img" style="background:#0a1a30"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Block%20Island.jpg" alt="Block Island Day Trip"></div>
+      <div class="charter-card-img"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sunset%20Cruise%20-%20Charters.jpg" alt="Sunset Cruise"></div>
       <div class="charter-card-body">
-        <div><div class="charter-card-type">Day Trip</div><h3 class="charter-card-title">Block Island Day Trip</h3><p class="charter-card-desc">Escape to Block Island for the ultimate day on the water. Enjoy a scenic cruise, stunning coastal views, and plenty of time to explore the island, grab lunch, or simply unwind.</p></div>
-        <div><div class="charter-features"><span class="charter-feature">8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Block Island destination</span><span class="charter-feature">Scenic coastal cruise</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers</span>$1,350</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-sub" style="margin-top:6px;font-style:italic;">* Additional fuel charge may apply</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719583/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
-      </div>
-    </div>
-
-    <!-- 1. Newport Full-Day Charter -->
-    <div class="charter-card">
-      <div class="charter-card-img" style="background:#0f2240"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Full%20Day%20-%20Charters.png" alt="Newport Full-Day Charter"></div>
-      <div class="charter-card-body">
-        <div><div class="charter-card-type">Full-Day Charter</div><h3 class="charter-card-title">Newport Full-Day Adventure</h3><p class="charter-card-desc">Explore Newport by water, from the harbor and bay to swimming spots and coves. Enjoy tubing, rock jumping, lunch in Jamestown, and the option to cruise by the beaches and mansions.</p></div>
-        <div><div class="charter-features"><span class="charter-feature">8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Multiple destinations</span><span class="charter-feature">Catering add-on available</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers</span>$1,250</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-sub" style="margin-top:6px;font-style:italic;">* Additional fuel charge may apply</div></div><button class="charter-book-btn" onclick="navigate('contact')">Book This Charter</button></div></div>
+        <div><div class="charter-card-type">Scenic Cruise</div><h3 class="charter-card-title">Sunset Cruise</h3><p class="charter-card-desc">Two hours of pure Newport magic. End your day with a leisurely cruise around the harbor and take in the breathtaking sunset over the water.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">2 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Refreshments included</span><span class="charter-feature">USCG Licensed Captain</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$449</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Maximum 12 guests</span></div><div class="charter-price-couples">Couples special: $349</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621979/?full-items=yes&flow=1423279" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
       </div>
     </div>
 
@@ -1181,17 +1219,17 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <div class="charter-card-body">
         <div><div class="charter-card-type">Half-Day Charter</div><h3 class="charter-card-title">Half-Day Adventure</h3><p class="charter-card-desc">Four hours on the open water with plenty of time for swimming, tubing, rock jumping, and exploring nearby coves. The time is yours to enjoy.</p></div>
         <div><div class="charter-features"><span class="charter-feature">4 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Custom itinerary</span><span class="charter-feature">Swim stop available</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers</span>$699</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621972/?full-items=yes&flow=1423279" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$699</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Maximum 12 guests</span></div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621972/?full-items=yes&flow=1423279" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
       </div>
     </div>
 
-    <!-- 3. Sunset Cruise -->
+    <!-- 3. Newport Full-Day Adventure -->
     <div class="charter-card">
-      <div class="charter-card-img"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Sunset%20Cruise%20-%20Charters.jpg" alt="Sunset Cruise"></div>
+      <div class="charter-card-img" style="background:#0f2240"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Full%20Day%20-%20Charters.png" alt="Newport Full-Day Charter"></div>
       <div class="charter-card-body">
-        <div><div class="charter-card-type">Scenic Cruise</div><h3 class="charter-card-title">Sunset Cruise</h3><p class="charter-card-desc">Two hours of pure Newport magic. End your day with a leisurely cruise around the harbor and take in the breathtaking sunset over the water.</p></div>
-        <div><div class="charter-features"><span class="charter-feature">2 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Refreshments included</span><span class="charter-feature">USCG Licensed Captain</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers</span>$449</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Couples special: $349</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/621979/?full-items=yes&flow=1423279" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
+        <div><div class="charter-card-type">Full-Day Charter</div><h3 class="charter-card-title">Newport Full-Day Adventure</h3><p class="charter-card-desc">Explore Newport by water, from the harbor and bay to swimming spots and coves. Enjoy tubing, rock jumping, lunch in Jamestown, and the option to cruise by the beaches and mansions.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Multiple destinations</span><span class="charter-feature">Catering add-on available</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$1,250</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Maximum 12 guests</span></div><div class="charter-price-sub" style="margin-top:6px;font-style:italic;">* Additional fuel charge may apply</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719300/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
       </div>
     </div>
 
@@ -1201,17 +1239,27 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <div class="charter-card-body">
         <div><div class="charter-card-type">Scenic Cruise</div><h3 class="charter-card-title">Morning Cruise</h3><p class="charter-card-desc">Start your day on the calm waters of Narragansett Bay with a peaceful cruise through Newport Harbor before the crowds arrive — coffee in hand, sea breeze in the air.</p></div>
         <div><div class="charter-features"><span class="charter-feature">1½ Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Calm harbor waters</span><span class="charter-feature">USCG Licensed Captain</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers</span>$299</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Couples special: $249</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719313/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$299</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Maximum 12 guests</span></div><div class="charter-price-couples">Couples special: $249</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719313/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
       </div>
     </div>
 
-    <!-- 5. Fishing Charter -->
+    <!-- 5. Block Island Day Trip -->
+    <div class="charter-card">
+      <div class="charter-card-img" style="background:#0a1a30"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Block%20Island.jpg" alt="Block Island Day Trip"></div>
+      <div class="charter-card-body">
+        <div><div class="charter-card-type">Day Trip</div><h3 class="charter-card-title">Block Island Day Trip</h3><p class="charter-card-desc">Escape to Block Island for the ultimate day on the water. Enjoy a scenic cruise, stunning coastal views, and plenty of time to explore the island, grab lunch, or simply unwind.</p></div>
+        <div><div class="charter-features"><span class="charter-feature">8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Block Island destination</span><span class="charter-feature">Scenic coastal cruise</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span>$1,350</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Maximum 12 guests</span></div><div class="charter-price-sub" style="margin-top:6px;font-style:italic;">* Additional fuel charge may apply</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719583/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
+      </div>
+    </div>
+
+    <!-- 6. Fishing Charter -->
     <div class="charter-card">
       <div class="charter-card-img" style="background:#14304e"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Fishing%20Charter%20-%20Charters.jpeg" alt="Fishing Charter"></div>
       <div class="charter-card-body">
         <div><div class="charter-card-type">Private Fishing Charter</div><h3 class="charter-card-title">Fishing Charter</h3><p class="charter-card-desc">Target striped bass, bluefish, and more in the waters off Newport. Rods, tackle, and local knowledge provided. Great for kids and adults alike.</p></div>
-        <div><div class="charter-features"><span class="charter-feature">4 or 8 Hours</span><span class="charter-feature">Up to 12 guests</span><span class="charter-feature">Gear provided</span><span class="charter-feature">Keep your catch</span></div>
-        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–12 passengers · 4 hours</span>$899</div><div class="charter-price-sub">+$100 per additional guest &nbsp;·&nbsp; <span class="price-max">Max 12 guests total</span></div><div class="charter-price-couples">Full day (8 hrs): $1,500</div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719314/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
+        <div><div class="charter-features"><span class="charter-feature">4 or 8 Hours</span><span class="charter-feature">Up to 6 guests</span><span class="charter-feature">Gear provided</span><span class="charter-feature">Keep your catch</span></div>
+        <div class="charter-card-footer"><div class="charter-price-block"><div class="charter-price"><span class="starting-at">1–6 passengers</span><span class="fishing-price-pair">$899 <span class="fishing-label">· 4 hrs</span>&nbsp;&nbsp;$1,500 <span class="fishing-label">· 8 hrs</span></span></div><div class="charter-price-sub"><span class="price-max">Maximum 6 guests</span></div></div><a href="https://fareharbor.com/embeds/book/newportboatadventuresri/items/719314/?full-items=yes&flow=no" class="charter-book-btn" style="text-decoration:none;display:inline-block;">Book This Charter</a></div></div>
       </div>
     </div>
 
@@ -1235,11 +1283,11 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         </div>
 
         <div class="food-card">
-          <div class="food-card-icon">🍕</div>
+          <div class="food-card-icon">🦞</div>
           <div class="food-card-body">
-            <div class="food-card-eyebrow">Imbriglia's</div>
-            <div class="food-card-title">Newport Pizza</div>
-            <p class="food-card-desc">Fresh-baked pies from one of Newport's most beloved neighborhood restaurants. Hot, hearty, and perfect for a full-day charter out on the water.</p>
+            <div class="food-card-eyebrow">Newport Chowder Co.</div>
+            <div class="food-card-title">Award-Winning Lobster Rolls &amp; Clam Chowder</div>
+            <p class="food-card-desc">Multiple award-winning lobster rolls and the richest clam chowder on the Rhode Island coast. A true Newport classic — enjoyed even better on the water.</p>
           </div>
         </div>
 
@@ -1253,11 +1301,11 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         </div>
 
         <div class="food-card">
-          <div class="food-card-icon">🦞</div>
+          <div class="food-card-icon">🍕</div>
           <div class="food-card-body">
-            <div class="food-card-eyebrow">Newport Chowder Co.</div>
-            <div class="food-card-title">Award-Winning Lobster Rolls &amp; Clam Chowder</div>
-            <p class="food-card-desc">Multiple award-winning lobster rolls and the richest clam chowder on the Rhode Island coast. A true Newport classic — enjoyed even better on the water.</p>
+            <div class="food-card-eyebrow">Imbriglio's</div>
+            <div class="food-card-title">Newport Pizza</div>
+            <p class="food-card-desc">Fresh-baked pies from one of Newport's most beloved neighborhood restaurants. Hot, hearty, and perfect for a full-day charter out on the water.</p>
           </div>
         </div>
 
@@ -1672,7 +1720,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         </div>
       </div>
       <div class="about-captain-img-wrap">
-        <img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Captain%20Nik%202%20-%20About%20Us.jpg" alt="Captain Nik — Newport Boat Adventures" class="about-captain-img photo-shadow-navy">
+        <img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Newport%20Boat%20Adventures-68.jpg" alt="Captain Nik — Newport Boat Adventures" class="about-captain-img photo-shadow-navy">
         <div class="about-captain-quote">
           <em>"No Bad Days on the Water"</em>
         </div>
@@ -2085,14 +2133,17 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       </div>
     </div>
     <div>
-      <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
-        <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" id="cf-first" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" id="cf-last" type="text" placeholder="Smith" required></div></div>
-        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" id="cf-email" type="email" placeholder="jane@example.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="cf-phone" type="tel" placeholder="(401) 555-0000"></div>
-        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" id="cf-interest"><option value="">— Select a topic —</option><option>Sunset Sail</option><option>Morning Cruise</option><option>Half-Day Charter</option><option>Full-Day Charter</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelor</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>No Bad Days Sweatshirt</option><option>Classic Sweatshirt</option><option>Classic T-Shirt</option><option>General Inquiry</option></select></div>
-        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" id="cf-message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/newportboatadventuresri@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Inquiry from Newport Boat Adventures Website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="">
+        <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" name="First Name" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" name="Last Name" type="text" placeholder="Smith" required></div></div>
+        <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" name="Email" type="email" placeholder="jane@example.com" required></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" placeholder="(401) 555-0000"></div>
+        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Sail</option><option>Morning Cruise</option><option>Half-Day Charter</option><option>Full-Day Charter</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelor</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
+        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="Message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
-        <p id="contactSuccessMsg" style="display:none;font-family:var(--font-ui);font-size:13px;color:var(--navy);margin-top:12px;padding:12px 16px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:2px">Your message has been sent! We&rsquo;ll be in touch shortly.</p>
       </form>
     </div>
   </div>
