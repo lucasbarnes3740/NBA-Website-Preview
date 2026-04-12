@@ -833,6 +833,24 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .food-grid{grid-template-columns:1fr 1fr}
   /* FAQ */
   .faq-question{font-size:16px}
+  /* Hero image: zoom out slightly on mobile */
+  .hero-bg{background-size:160%}
+  /* Shadow blocks: thinner on mobile */
+  .story-img-wrap::before{left:-10px;height:calc(100% - 10px)}
+  .story-img-wrap{padding:0 0 10px 0}
+  .about-story-img-wrap::before{left:-10px;height:calc(100% - 10px)}
+  .about-story-img-wrap{padding:0 0 10px 0}
+  /* Vessel badge: move to bottom-left so it doesn't overlap image */
+  .about-vessel-badge{bottom:0;right:auto;left:0;font-size:11px;padding:7px 14px}
+  /* Vessel track: remove right offset on mobile */
+  #vessel-track{width:100% !important}
+  /* Testimonials: fix overlap with section above */
+  .testimonials-section::before{height:40px}
+  .testimonials-section{padding-top:80px}
+  /* Plan a Custom Event button: smaller on mobile */
+  .occasions-content .btn-primary{font-size:10px;padding:13px 22px;letter-spacing:.14em}
+  /* Captain image: show face better */
+  .about-captain-img{object-position:center 15%}
 }
 
 /* XS — mobile phone */
@@ -980,7 +998,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           <div class="footer-links">
             <span class="footer-link" style="cursor:default">Newport, Rhode Island</span>
             <span class="footer-link" style="cursor:default">(401) 830-3839</span>
-            <a class="footer-link" href="/cdn-cgi/l/email-protection#610f0416110e1315030e0015000517040f1514130412130821060c00080d4f020e0c" style="text-decoration:none">Email Us</a>
+            <a class="footer-link" href="mailto:newportboatadventuresri@gmail.com" style="text-decoration:none">Email Us</a>
             <button class="footer-link" onclick="navigate('contact')">Get in Touch</button>
           </div>
         </div>
@@ -1255,7 +1273,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
 
     <!-- 6. Fishing Charter -->
     <div class="charter-card">
-      <div class="charter-card-img" style="background:#14304e"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Fishing%20Charter%20-%20Charters.jpeg" alt="Fishing Charter"></div>
+      <div class="charter-card-img" style="background:#14304e"><img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/Fishing%20Charter%20-%20Charters.jpeg" alt="Fishing Charter" style="object-position:center 25%;"></div>
       <div class="charter-card-body">
         <div><div class="charter-card-type">Private Fishing Charter</div><h3 class="charter-card-title">Fishing Charter</h3><p class="charter-card-desc">Target striped bass, bluefish, and more in the waters off Newport. Rods, tackle, and local knowledge provided. Great for kids and adults alike.</p></div>
         <div><div class="charter-features"><span class="charter-feature">4 or 8 Hours</span><span class="charter-feature">Up to 6 guests</span><span class="charter-feature">Gear provided</span><span class="charter-feature">Keep your catch</span></div>
@@ -1557,18 +1575,21 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <div class="section-eyebrow" style="justify-content:center">Design Your Own</div>
       <h2 class="custom-event-title">Don't See What You Have in Mind?</h2>
       <p class="custom-event-sub">Tell us about your vision and we'll build a completely bespoke experience around your group, date, and budget. Every detail, handled for you.</p>
-      <form class="custom-event-form" onsubmit="return false;">
+      <form class="custom-event-form" action="https://formsubmit.co/newportboatadventuresri@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Custom Event Request — Newport Boat Adventures">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <div class="cev-row">
-          <div class="cev-group"><label class="cev-label">First Name</label><input class="cev-input" type="text" placeholder="Jane"></div>
-          <div class="cev-group"><label class="cev-label">Last Name</label><input class="cev-input" type="text" placeholder="Smith"></div>
+          <div class="cev-group"><label class="cev-label">First Name</label><input class="cev-input" type="text" name="First Name" placeholder="Jane"></div>
+          <div class="cev-group"><label class="cev-label">Last Name</label><input class="cev-input" type="text" name="Last Name" placeholder="Smith"></div>
         </div>
         <div class="cev-row">
-          <div class="cev-group"><label class="cev-label">Email</label><input class="cev-input" type="email" placeholder="jane@example.com"></div>
-          <div class="cev-group"><label class="cev-label">Phone</label><input class="cev-input" type="tel" placeholder="(401) 555-0000"></div>
+          <div class="cev-group"><label class="cev-label">Email</label><input class="cev-input" type="email" name="Email" placeholder="jane@example.com"></div>
+          <div class="cev-group"><label class="cev-label">Phone</label><input class="cev-input" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
         </div>
         <div class="cev-row">
           <div class="cev-group"><label class="cev-label">Type of Event</label>
-            <select class="cev-input">
+            <select class="cev-input" name="Type of Event">
               <option value="">Select an event type...</option>
               <option>Bachelorette / Bachelor</option>
               <option>Proposal</option>
@@ -1582,12 +1603,12 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
               <option>Something Else</option>
             </select>
           </div>
-          <div class="cev-group"><label class="cev-label">Approximate Date</label><input class="cev-input" type="text" placeholder="e.g. July 2025 or flexible"></div>
+          <div class="cev-group"><label class="cev-label">Approximate Date</label><input class="cev-input" type="text" name="Approximate Date" placeholder="e.g. July 2025 or flexible"></div>
         </div>
         <div class="cev-row">
-          <div class="cev-group"><label class="cev-label">Number of Guests</label><input class="cev-input" type="number" placeholder="e.g. 8" min="1" max="12"></div>
+          <div class="cev-group"><label class="cev-label">Number of Guests</label><input class="cev-input" type="number" name="Number of Guests" placeholder="e.g. 8" min="1" max="12"></div>
           <div class="cev-group"><label class="cev-label">Approximate Budget</label>
-            <select class="cev-input">
+            <select class="cev-input" name="Approximate Budget">
               <option value="">Select a range...</option>
               <option>Under $500</option>
               <option>$500 – $1,000</option>
@@ -1597,7 +1618,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
             </select>
           </div>
         </div>
-        <div class="cev-group cev-full"><label class="cev-label">Tell Us About Your Vision</label><textarea class="cev-input cev-textarea" placeholder="Share any details, special requests, or ideas you have in mind. The more you tell us, the better we can tailor the experience for you."></textarea></div>
+        <div class="cev-group cev-full"><label class="cev-label">Tell Us About Your Vision</label><textarea class="cev-input cev-textarea" name="Vision" placeholder="Share any details, special requests, or ideas you have in mind. The more you tell us, the better we can tailor the experience for you."></textarea></div>
         <div style="text-align:center;margin-top:8px">
           <button type="submit" class="btn-primary" style="padding:18px 48px">Send My Request</button>
         </div>
@@ -1693,6 +1714,15 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           }
           window.vesselSlide=function(dir){vesselUpdate(vi+dir);};
           window.vesselGoTo=function(i){vesselUpdate(i);};
+          // Touch/swipe support
+          var track=document.getElementById('vessel-track');
+          var touchStartX=0,touchEndX=0;
+          track.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].screenX;},{passive:true});
+          track.addEventListener('touchend',function(e){
+            touchEndX=e.changedTouches[0].screenX;
+            var diff=touchStartX-touchEndX;
+            if(Math.abs(diff)>40){vesselUpdate(vi+(diff>0?1:-1));}
+          },{passive:true});
         })();
         </script>
       </div>
@@ -2099,7 +2129,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
     <div class="page-hero-content">
       <div class="page-hero-eyebrow">Get in Touch</div>
       <h1 class="page-hero-title">Contact <em>Us</em></h1>
-      <p class="page-hero-sub">We&rsquo;d love to hear from you. Let&rsquo;s plan your perfect day on the water.</p>
+      <p class="page-hero-sub">We&rsquo;d love to hear from you. Let&rsquo;s plan your day on the water.</p>
     </div>
     <div class="section-wave"><svg viewBox="0 0 1440 56" preserveAspectRatio="none"><path d="M0,28 C360,56 720,0 1080,32 C1260,46 1380,20 1440,36 L1440,56 L0,56 Z" fill="#faf7f2"/></svg></div>
   </div>
@@ -2109,7 +2139,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <p class="contact-info-sub">Have a question about a charter, want to plan a custom event, or just want to say hello? Reach out anytime — we'd love to connect.</p>
       <div class="contact-details" style="display:flex;flex-direction:column;gap:24px">
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2C7.24 2 5 4.24 5 7c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7a2 2 0 100-4 2 2 0 000 4z"/></svg></div><div><div class="contact-detail-label">Location</div><div class="contact-detail-value">Newport, Rhode Island</div></div></div>
-        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M2 3h16v12H2V3zm8 7l6-5H4l6 5zm0 1.5L4 6.5V13h12V6.5l-6 5z"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:newportboatadventuresri@gmail.com" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(13,31,60,.25);transition:border-color .2s" onmouseover="this.style.borderColor='#c9a84c'" onmouseout="this.style.borderColor='rgba(13,31,60,.25)'">newportboatadventuresri@gmail.com</a></div></div></div>
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M2 3h16v12H2V3zm8 7l6-5H4l6 5zm0 1.5L4 6.5V13h12V6.5l-6 5z"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value">newportboatadventuresri@gmail.com</div></div></div>
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M6.6 9.4c.9 1.8 2.2 3.2 4 4l1.3-1.3c.2-.2.4-.2.6-.1 1 .3 2 .5 3 .5.3 0 .5.2.5.5v3c0 .3-.2.5-.5.5C8.3 16.5 3.5 11.7 3.5 5.5 3.5 5.2 3.7 5 4 5h3c.3 0 .5.2.5.5 0 1 .2 2 .5 3 .1.2 0 .4-.1.6L6.6 9.4z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value">(401) 830-3839</div></div></div>
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm.5 8.5V6a.5.5 0 00-1 0v5a.5.5 0 00.15.35l3 3a.5.5 0 00.7-.7l-2.85-2.85z"/></svg></div><div><div class="contact-detail-label">Season</div><div class="contact-detail-value">May – October</div></div></div>
         <!-- Follow Us — separated with a top border -->
@@ -2140,7 +2170,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <input type="hidden" name="_next" value="">
         <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" name="First Name" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" name="Last Name" type="text" placeholder="Smith" required></div></div>
         <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" name="Email" type="email" placeholder="jane@example.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" placeholder="(401) 555-0000"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
         <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Sail</option><option>Morning Cruise</option><option>Half-Day Charter</option><option>Full-Day Charter</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelor</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="Message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
@@ -2190,10 +2220,10 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <div id="mStep3" style="display:none">
           <div class="step-title">Your Information</div>
           <div class="modal-form-grid">
-            <div class="modal-form-group"><label class="modal-form-label">First Name</label><input class="modal-form-input" type="text" placeholder="Jane"></div>
-            <div class="modal-form-group"><label class="modal-form-label">Last Name</label><input class="modal-form-input" type="text" placeholder="Smith"></div>
-            <div class="modal-form-group full"><label class="modal-form-label">Email</label><input class="modal-form-input" type="email" placeholder="jane@example.com"></div>
-            <div class="modal-form-group"><label class="modal-form-label">Phone</label><input class="modal-form-input" type="tel" placeholder="(401) 555-0000"></div>
+            <div class="modal-form-group"><label class="modal-form-label">First Name</label><input class="modal-form-input" type="text" name="First Name" placeholder="Jane"></div>
+            <div class="modal-form-group"><label class="modal-form-label">Last Name</label><input class="modal-form-input" type="text" name="Last Name" placeholder="Smith"></div>
+            <div class="modal-form-group full"><label class="modal-form-label">Email</label><input class="modal-form-input" type="email" name="Email" placeholder="jane@example.com"></div>
+            <div class="modal-form-group"><label class="modal-form-label">Phone</label><input class="modal-form-input" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
             <div class="modal-form-group"><label class="modal-form-label">How did you hear about us?</label><select class="modal-form-select"><option>Select…</option><option>Google</option><option>Instagram</option><option>TikTok</option><option>Friend / family</option><option>Hotel</option><option>Return guest</option></select></div>
             <div class="modal-form-group full"><label class="modal-form-label">Special requests</label><textarea class="modal-form-textarea" placeholder="Dietary needs, accessibility, special occasions…"></textarea></div>
           </div>
@@ -2226,7 +2256,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
 // Data
 const CHARTERS = {
@@ -2505,9 +2535,4 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   navigate('home');
 });
-document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
-</script>
-<!-- FareHarbor Lightframe API - do not remove - see: https://fareharbor.com/help/website/resources/lightframe-api/ -->
-<script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
-</body>
-</html>
+document.addEventListener('keydown'
