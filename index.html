@@ -2118,7 +2118,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <p id="shopSignupMsg" style="display:none;font-family:var(--font-ui);font-size:13px;color:var(--gold);margin-top:12px;text-align:center">You&rsquo;re on the list! We&rsquo;ll be in touch.</p>
     </div>
   </div>
-  <div id="footer-shop"></div>
+
 </div>
 
 <!-- ══════════════ CONTACT PAGE ══════════════ -->
@@ -2513,7 +2513,7 @@ function startReviewTimer(){
 document.addEventListener('DOMContentLoaded',()=>{
   // Inject shared footer into every page
   const tpl = document.getElementById('footer-tpl');
-  const ids = ['footer-home','footer-charters','footer-events','footer-about','footer-faq','footer-menu','footer-shop','footer-contact'];
+  const ids = ['footer-home','footer-charters','footer-events','footer-about','footer-faq','footer-menu','footer-contact'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if(el && tpl) el.appendChild(tpl.content.cloneNode(true));
@@ -2535,4 +2535,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
   navigate('home');
 });
-document.addEventListener('keydown'
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
+</script>
+<!-- FareHarbor Lightframe API - do not remove - see: https://fareharbor.com/help/website/resources/lightframe-api/ -->
+<script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
+</body>
+</html>
