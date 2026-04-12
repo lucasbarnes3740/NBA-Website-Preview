@@ -453,12 +453,12 @@ body{font-family:var(--font-body);font-size:18px;color:var(--navy);background:va
 .about-spec-label{font-family:var(--font-ui);font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
 .about-spec-value{font-family:var(--font-display);font-size:16px;font-weight:500;color:var(--white)}
 .about-vessel-desc{font-family:var(--font-body);font-size:17px;color:rgba(255,255,255,.6);line-height:1.7}
-.about-vessel-img-wrap{position:relative;overflow:visible;padding:0 18px 18px 0}
+.about-vessel-img-wrap{position:relative;overflow:hidden;padding:0 18px 18px 0}
 .about-vessel-img-wrap::before{content:'';position:absolute;bottom:0;right:0;width:calc(100% - 18px);height:calc(100% - 18px);background:var(--gold);border-radius:4px;z-index:0}
 .about-vessel-img{width:calc(100% - 18px);height:420px;object-fit:cover;border-radius:4px;display:block;position:absolute;top:0;left:0;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
 .about-vessel-img:hover{transform:translateY(-4px);box-shadow:0 8px 10px rgba(0,0,0,.06),0 20px 56px rgba(13,31,60,.25);}
 .about-vessel-img-wrap-sizer{height:420px;display:block;}
-.about-vessel-badge{position:absolute;bottom:-4px;right:4px;z-index:3;font-family:var(--font-display);font-size:13px;font-weight:500;font-style:italic;background:var(--gold);color:var(--navy);padding:9px 18px;border-radius:2px}
+.about-vessel-badge{position:absolute;bottom:0;right:0;z-index:3;font-family:var(--font-display);font-size:13px;font-weight:500;font-style:italic;letter-spacing:.02em;background:var(--gold);color:var(--navy);padding:10px 20px;border-radius:2px}
 /* Section 3 — captain */
 .about-captain-section{background:var(--cream);padding:90px clamp(24px,5vw,80px)}
 .about-captain-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
@@ -471,7 +471,7 @@ body{font-family:var(--font-body);font-size:18px;color:var(--navy);background:va
 .about-social-btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
 .about-social-btn-outline:hover{background:var(--navy);color:var(--gold)}
 .about-captain-img-wrap{position:relative;padding:0}
-.about-captain-img{width:100%;height:580px;object-fit:cover;object-position:center 30%;border-radius:4px;display:block;position:relative;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
+.about-captain-img{width:100%;height:580px;object-fit:cover;object-position:center 20%;border-radius:4px;display:block;position:relative;z-index:1;transition:transform .35s ease,box-shadow .35s ease;}
 .about-captain-quote{margin-top:20px;font-family:var(--font-display);font-size:22px;font-style:italic;color:var(--gold);text-align:center;padding:16px 0;border-top:1px solid rgba(201,168,76,.25)}
 @media(max-width:900px){
   .about-story-inner,.about-vessel-inner,.about-captain-inner{grid-template-columns:1fr;gap:40px}
@@ -833,24 +833,26 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .food-grid{grid-template-columns:1fr 1fr}
   /* FAQ */
   .faq-question{font-size:16px}
-  /* Hero image: zoom out slightly on mobile */
-  .hero-bg{background-size:160%}
+  /* Hero image: show more scene on mobile using position not size */
+  .hero-bg{background-size:cover;background-position:center 35%}
   /* Shadow blocks: thinner on mobile */
   .story-img-wrap::before{left:-10px;height:calc(100% - 10px)}
   .story-img-wrap{padding:0 0 10px 0}
   .about-story-img-wrap::before{left:-10px;height:calc(100% - 10px)}
   .about-story-img-wrap{padding:0 0 10px 0}
-  /* Vessel badge: move to bottom-left so it doesn't overlap image */
-  .about-vessel-badge{bottom:0;right:auto;left:0;font-size:11px;padding:7px 14px}
-  /* Vessel track: remove right offset on mobile */
-  #vessel-track{width:100% !important}
+  /* Vessel carousel: full width, badge below, no overflow into next section */
+  #vessel-track{width:100% !important;height:300px !important;position:relative !important;border-radius:4px;overflow:hidden}
+  .about-vessel-img-wrap{overflow:hidden !important;padding:0 !important;position:relative !important}
+  .about-vessel-img-wrap-sizer{display:none}
+  .about-vessel-badge{position:relative !important;bottom:auto !important;right:auto !important;left:auto !important;display:inline-block;margin-top:10px;font-size:11px;padding:7px 14px}
   /* Testimonials: fix overlap with section above */
   .testimonials-section::before{height:40px}
   .testimonials-section{padding-top:80px}
   /* Plan a Custom Event button: smaller on mobile */
-  .occasions-content .btn-primary{font-size:10px;padding:13px 22px;letter-spacing:.14em}
+  .occasions-content .btn-primary,
+  #page-events .page-hero-content .btn-primary{font-size:10px;padding:12px 20px;letter-spacing:.12em;width:auto;max-width:260px}
   /* Captain image: show face better */
-  .about-captain-img{object-position:center 15%}
+  .about-captain-img{object-position:center 20%}
 }
 
 /* XS — mobile phone */
@@ -998,7 +1000,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
           <div class="footer-links">
             <span class="footer-link" style="cursor:default">Newport, Rhode Island</span>
             <span class="footer-link" style="cursor:default">(401) 830-3839</span>
-            <a class="footer-link" href="mailto:newportboatadventuresri@gmail.com" style="text-decoration:none">Email Us</a>
+            <a class="footer-link" href="mailto:newportboatadventuresri@gmail.com">Email Us</a>
             <button class="footer-link" onclick="navigate('contact')">Get in Touch</button>
           </div>
         </div>
@@ -1676,9 +1678,9 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         </div>
         <p class="about-vessel-desc"><em>One Day</em> is carefully maintained and built for both comfort and performance, offering the perfect setting for cruises, fishing trips, swimming, sightseeing, and special events on the water. Spacious, versatile, and designed for unforgettable days at sea, she's ready for whatever kind of experience you have in mind.</p>
       </div>
-      <div class="about-vessel-img-wrap" id="vessel-wrap" style="overflow:visible;">
-        <div class="about-vessel-img-wrap-sizer"></div>
-        <div id="vessel-track" style="position:absolute;top:0;left:0;width:calc(100% - 18px);height:420px;z-index:1;overflow:hidden;border-radius:4px;">
+      <div class="about-vessel-img-wrap" id="vessel-wrap" style="position:relative;overflow:hidden;padding:0 18px 18px 0;">
+        <div class="about-vessel-img-wrap-sizer" style="background:var(--gold);position:absolute;bottom:0;right:0;width:calc(100% - 18px);height:calc(100% - 18px);border-radius:4px;z-index:0;"></div>
+        <div id="vessel-track" style="position:relative;top:0;left:0;width:calc(100% - 18px);height:420px;z-index:1;overflow:hidden;border-radius:4px;">
           <div id="vessel-slider" style="display:flex;width:800%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1);">
             <img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%202%20-%20Home.png" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 1">
             <img loading="lazy" src="https://raw.githubusercontent.com/lucasbarnes3740/NBA-Images/main/One%20Day%207%20copy%20-%20About%20Us.jpg" style="width:12.5%;height:100%;object-fit:cover;flex-shrink:0;" alt="One Day 2">
@@ -2139,7 +2141,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <p class="contact-info-sub">Have a question about a charter, want to plan a custom event, or just want to say hello? Reach out anytime — we'd love to connect.</p>
       <div class="contact-details" style="display:flex;flex-direction:column;gap:24px">
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2C7.24 2 5 4.24 5 7c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7a2 2 0 100-4 2 2 0 000 4z"/></svg></div><div><div class="contact-detail-label">Location</div><div class="contact-detail-value">Newport, Rhode Island</div></div></div>
-        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M2 3h16v12H2V3zm8 7l6-5H4l6 5zm0 1.5L4 6.5V13h12V6.5l-6 5z"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value">newportboatadventuresri@gmail.com</div></div></div>
+        <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M2 3h16v12H2V3zm8 7l6-5H4l6 5zm0 1.5L4 6.5V13h12V6.5l-6 5z"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-value"><a href="mailto:newportboatadventuresri@gmail.com" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(13,31,60,.25);">newportboatadventuresri@gmail.com</a></div></div></div>
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M6.6 9.4c.9 1.8 2.2 3.2 4 4l1.3-1.3c.2-.2.4-.2.6-.1 1 .3 2 .5 3 .5.3 0 .5.2.5.5v3c0 .3-.2.5-.5.5C8.3 16.5 3.5 11.7 3.5 5.5 3.5 5.2 3.7 5 4 5h3c.3 0 .5.2.5.5 0 1 .2 2 .5 3 .1.2 0 .4-.1.6L6.6 9.4z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-value">(401) 830-3839</div></div></div>
         <div class="contact-detail"><div class="contact-icon"><svg viewBox="0 0 20 20" fill="currentColor" style="color:var(--gold)"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm.5 8.5V6a.5.5 0 00-1 0v5a.5.5 0 00.15.35l3 3a.5.5 0 00.7-.7l-2.85-2.85z"/></svg></div><div><div class="contact-detail-label">Season</div><div class="contact-detail-value">May – October</div></div></div>
         <!-- Follow Us — separated with a top border -->
@@ -2171,7 +2173,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" name="First Name" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" name="Last Name" type="text" placeholder="Smith" required></div></div>
         <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" name="Email" type="email" placeholder="jane@example.com" required></div>
         <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
-        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Sail</option><option>Morning Cruise</option><option>Half-Day Charter</option><option>Full-Day Charter</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelor</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
+        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Cruise</option><option>Half-Day Charter</option><option>Newport Full-Day</option><option>Morning Cruise</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelorette</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="Message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
       </form>
