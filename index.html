@@ -833,8 +833,11 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .food-grid{grid-template-columns:1fr 1fr}
   /* FAQ */
   .faq-question{font-size:16px}
-  /* Hero image: show more scene on mobile using position not size */
   .hero-bg{background-size:cover;background-position:center 35%}
+  /* Hero: reduce height on mobile so less dead space below buttons */
+  .hero{min-height:unset;height:85vh}
+  /* Hide scroll indicator on mobile - it adds dead space */
+  .hero-scroll{display:none}
   /* Shadow blocks: thinner on mobile */
   .story-img-wrap::before{left:-10px;height:calc(100% - 10px)}
   .story-img-wrap{padding:0 0 10px 0}
@@ -845,14 +848,14 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .about-vessel-img-wrap{overflow:hidden !important;padding:0 !important;position:relative !important}
   .about-vessel-img-wrap-sizer{display:none}
   .about-vessel-badge{position:relative !important;bottom:auto !important;right:auto !important;left:auto !important;display:inline-block;margin-top:10px;font-size:11px;padding:7px 14px}
-  /* Testimonials: fix overlap with section above */
-  .testimonials-section::before{height:40px}
-  .testimonials-section{padding-top:80px}
+  /* Testimonials: more top padding to push Guest Stories clearly below story section */
+  .testimonials-section::before{height:50px}
+  .testimonials-section{padding-top:96px}
   /* Plan a Custom Event button: smaller on mobile */
   .occasions-content .btn-primary,
   #page-events .page-hero-content .btn-primary{font-size:10px;padding:12px 20px;letter-spacing:.12em;width:auto;max-width:260px}
-  /* Captain image: show face better */
-  .about-captain-img{object-position:center 20%}
+  /* Captain image: show sweatshirt, move position down */
+  .about-captain-img{object-position:center 35%}
 }
 
 /* XS — mobile phone */
@@ -2173,7 +2176,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" name="First Name" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" name="Last Name" type="text" placeholder="Smith" required></div></div>
         <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" name="Email" type="email" placeholder="jane@example.com" required></div>
         <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
-        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Cruise</option><option>Half-Day Charter</option><option>Newport Full-Day</option><option>Morning Cruise</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette Party</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
+        <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Cruise</option><option>Half-Day Charter</option><option>Newport Full-Day</option><option>Morning Cruise</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelorette</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="Message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
       </form>
