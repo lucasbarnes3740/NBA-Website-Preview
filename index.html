@@ -843,9 +843,12 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   .about-story-img-wrap{padding:0 0 10px 0}
   /* Vessel carousel: full width, badge below, no overflow into next section */
   #vessel-track{width:100% !important;height:300px !important;position:relative !important;border-radius:4px;overflow:hidden}
+  /* Vessel section mobile: remove gold shadow, badge bottom-left of image */
   .about-vessel-img-wrap{overflow:hidden !important;padding:0 !important;position:relative !important}
+  .about-vessel-img-wrap::before{display:none !important}
   .about-vessel-img-wrap-sizer{display:none}
-  .about-vessel-badge{position:relative !important;bottom:auto !important;right:auto !important;left:auto !important;display:inline-block;margin-top:10px;font-size:11px;padding:7px 14px}
+  #vessel-track{position:relative !important;width:100% !important;height:280px !important}
+  .about-vessel-badge{position:absolute !important;bottom:0 !important;left:0 !important;right:auto !important;font-size:11px;padding:8px 14px;border-radius:0 2px 0 0}
   /* Testimonials: more space above Guest Stories */
   .testimonials-section::before{height:50px}
   .testimonials-section{padding-top:112px}
@@ -889,7 +892,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   /* Vessel specs */
   .vessel-specs{grid-template-columns:1fr}
   /* Testimonials */
-  .testimonials-section{padding:52px 16px}
+  .testimonials-section{padding:130px 16px 52px}
   .review-row{grid-template-columns:1fr}
   .testimonial-card{padding:24px 20px}
   /* Events */
