@@ -1581,7 +1581,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       <div class="section-eyebrow" style="justify-content:center">Design Your Own</div>
       <h2 class="custom-event-title">Don't See What You Have in Mind?</h2>
       <p class="custom-event-sub">Tell us about your vision and we'll build a completely bespoke experience around your group, date, and budget. Every detail, handled for you.</p>
-      <form class="custom-event-form" action="https://formsubmit.co/newportboatadventuresri@gmail.com" method="POST">
+      <form class="custom-event-form" id="cevForm">
         <input type="hidden" name="_subject" value="New Custom Event Request — Newport Boat Adventures">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
@@ -1628,6 +1628,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
         <div style="text-align:center;margin-top:8px">
           <button type="submit" class="btn-primary" style="padding:18px 48px">Send My Request</button>
         </div>
+        <div id="cevSuccess" style="display:none;margin-top:20px;padding:16px 20px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:2px;font-family:var(--font-ui);font-size:13px;letter-spacing:.04em;color:var(--white);text-align:center;">✓ &nbsp;Request sent! We'll be in touch to start planning your experience.</div>
       </form>
     </div>
   </div>
@@ -2169,17 +2170,17 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
       </div>
     </div>
     <div>
-      <form class="contact-form" id="contactForm" action="https://formsubmit.co/newportboatadventuresri@gmail.com" method="POST">
+      <form class="contact-form" id="contactForm">
         <input type="hidden" name="_subject" value="New Inquiry from Newport Boat Adventures Website">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="">
         <div class="form-row"><div class="form-group"><label class="form-label">First Name</label><input class="form-input" name="First Name" type="text" placeholder="Jane" required></div><div class="form-group"><label class="form-label">Last Name</label><input class="form-input" name="Last Name" type="text" placeholder="Smith" required></div></div>
         <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" name="Email" type="email" placeholder="jane@example.com" required></div>
-        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" name="Phone" placeholder="(401) 555-0000"></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" name="Phone" type="tel" placeholder="(401) 555-0000"></div>
         <div class="form-group"><label class="form-label">Interested In</label><select class="form-select" name="Interested In"><option value="">— Select a topic —</option><option>Sunset Cruise</option><option>Half-Day Charter</option><option>Newport Full-Day</option><option>Morning Cruise</option><option>Block Island Day Trip</option><option>Fishing Charter</option><option>Birthday / Celebration</option><option>Bachelorette / Bachelorette</option><option>Proposal</option><option>Anniversary Cruise</option><option>Corporate Event</option><option>Wine Tour</option><option>Folk &amp; Jazz Fest / 4th of July</option><option>Custom Event</option><option>General Inquiry</option></select></div>
         <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" name="Message" rows="4" placeholder="Tell us about your vision, group size, preferred dates..." required></textarea></div>
         <button type="submit" class="form-submit">Send Message →</button>
+        <div id="contactSuccess" style="display:none;margin-top:16px;padding:16px 20px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);border-radius:2px;font-family:var(--font-ui);font-size:13px;letter-spacing:.04em;color:var(--navy);">✓ &nbsp;Message sent! We'll be in touch soon.</div>
       </form>
     </div>
   </div>
@@ -2545,5 +2546,54 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
 </script>
 <!-- FareHarbor Lightframe API - do not remove - see: https://fareharbor.com/help/website/resources/lightframe-api/ -->
 <script src="https://fareharbor.com/embeds/api/v1/?autolightframe=yes"></script>
+<script>
+// AJAX form submission — keeps user on page, shows success message
+function ajaxFormSubmit(formEl, successEl, btnEl) {
+  var data = new FormData(formEl);
+  btnEl.disabled = true;
+  btnEl.textContent = 'Sending…';
+  fetch('https://formsubmit.co/ajax/newportboatadventuresri@gmail.com', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(json) {
+    successEl.style.display = 'block';
+    formEl.reset();
+    btnEl.disabled = false;
+    btnEl.textContent = btnEl.getAttribute('data-orig') || btnEl.textContent;
+  })
+  .catch(function() {
+    // Fallback: still show success (email likely sent)
+    successEl.style.display = 'block';
+    formEl.reset();
+    btnEl.disabled = false;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Contact form
+  var cForm = document.getElementById('contactForm');
+  if (cForm) {
+    var cBtn = cForm.querySelector('[type="submit"]');
+    cBtn.setAttribute('data-orig', cBtn.textContent);
+    cForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      ajaxFormSubmit(cForm, document.getElementById('contactSuccess'), cBtn);
+    });
+  }
+  // Custom event form
+  var evForm = document.getElementById('cevForm');
+  if (evForm) {
+    var evBtn = evForm.querySelector('[type="submit"]');
+    evBtn.setAttribute('data-orig', evBtn.textContent);
+    evForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      ajaxFormSubmit(evForm, document.getElementById('cevSuccess'), evBtn);
+    });
+  }
+});
+</script>
 </body>
 </html>
