@@ -1823,7 +1823,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
 
       <div class="faq-category">
         <div class="faq-cat-header"><div class="faq-cat-icon-text">06</div><div class="faq-cat-title">Large Groups (7–12 Guests) — How It Works</div></div>
-        <div class="faq-item"><button class="faq-question" onclick="toggleFAQ(this)"><span>What is a bareboat charter?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">
+        <div class="faq-item" id="bareboat-charter"><button class="faq-question" onclick="toggleFAQ(this)"><span>What is a bareboat charter?</span><em class="faq-icon">+</em></button><div class="faq-answer"><div class="faq-answer-inner">
           <p style="margin-bottom:14px;">For groups of 7–12, U.S. Coast Guard regulations require us to operate as a <strong>Bareboat Charter</strong> — meaning you rent the vessel and select your own captain. Groups of 1–6 have a captain automatically included.</p>
 
           <p style="font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Captain Options</p>
@@ -2564,7 +2564,37 @@ document.addEventListener('DOMContentLoaded',()=>{
     row.addEventListener('mouseenter',()=>clearInterval(cReviewTimer));
     row.addEventListener('mouseleave',()=>startCReviewTimer());
   });
-  navigate('home');
+
+  // Handle deep links: open specific FAQ items by hash
+  function handleHashRoute(){
+    var hash = window.location.hash;
+    if(hash === '#bareboat-charter' || hash === '#faq'){
+      navigate('faq');
+      if(hash === '#bareboat-charter'){
+        setTimeout(function(){
+          var el = document.getElementById('bareboat-charter');
+          if(el){
+            // Close all other FAQ items, open this one
+            document.querySelectorAll('.faq-item.open').forEach(e=>e.classList.remove('open'));
+            el.classList.add('open');
+            // Scroll to it
+            setTimeout(function(){
+              var top = el.getBoundingClientRect().top + window.pageYOffset - 90;
+              window.scrollTo({top:top, behavior:'smooth'});
+            }, 250);
+          }
+        }, 200);
+      }
+      return true;
+    }
+    return false;
+  }
+
+  if(!handleHashRoute()){
+    navigate('home');
+  }
+  // Also listen for hash changes (e.g. clicking the same link again)
+  window.addEventListener('hashchange', handleHashRoute);
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
 </script>
