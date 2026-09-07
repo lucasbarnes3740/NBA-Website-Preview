@@ -855,6 +855,10 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:
   /* Plan a Custom Event button: smaller on mobile */
   .occasions-content .btn-primary,
   #page-events .page-hero-content .btn-primary{font-size:10px;padding:12px 20px;letter-spacing:.12em;width:auto;max-width:260px}
+  /* Home page main One Day image: show full boat (no cropping) on mobile */
+  .vessel-img{height:auto;aspect-ratio:3/2;padding:0 10px 10px 0;background:var(--navy)}
+  .vessel-img::before{width:calc(100% - 10px);height:calc(100% - 10px)}
+  .vessel-img img{width:calc(100% - 10px);height:calc(100% - 10px);object-fit:contain;background:var(--navy)}
   /* Captain image: show sweatshirt */
   .about-captain-img{object-position:center 45%}
 }
